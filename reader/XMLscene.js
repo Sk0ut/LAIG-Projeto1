@@ -13,6 +13,8 @@ XMLscene.prototype.init = function (application) {
 
     this.initLights();
 
+    this.initObjects();
+
     this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
     this.gl.clearDepth(100.0);
@@ -22,6 +24,10 @@ XMLscene.prototype.init = function (application) {
 
 	this.axis=new CGFaxis(this);
 };
+
+XMLscene.prototype.initObjects = function() {
+	this.rectangle = new MyCylinder(this,1,1,1,8,20);
+}
 
 XMLscene.prototype.initLights = function () {
 
@@ -72,6 +78,9 @@ XMLscene.prototype.display = function () {
 	// Draw axis
 	this.axis.display();
 
+	// Draw objects
+	this.rectangle.display();
+	
 	this.setDefaultAppearance();
 	
 	// ---- END Background, camera and axis setup
