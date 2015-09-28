@@ -11,7 +11,11 @@ function getUrlVars() {
     return vars;
 }	 
 
-serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js', 'primitives/MyTriangle.js', 'primitives/MyRectangle.js', 'primitives/MyCylinder.js', 'primitives/MyCircle.js', 'primitives/MyCylinderBody.js', 'primitives/MySphere.js',
+serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
+'primitives/MyTriangle.js', 'primitives/MyRectangle.js', 'primitives/MyCylinder.js', 'primitives/MyCircle.js',
+'primitives/MyCylinderBody.js', 'primitives/MySphere.js',
+'data/MySceneData.js', 'data/SceneInitials.js', 'data/SceneIllumination.js',
+'data/SceneElements.js',
 
 main=function()
 {
@@ -38,6 +42,9 @@ main=function()
 	
 	// start
     app.run();
+
+    var data = new MySceneData();
+    console.log(data);
 }
 
 ]);
