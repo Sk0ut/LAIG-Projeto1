@@ -27,12 +27,6 @@ MyRectangle.prototype.initBuffers = function() {
         this.x2,this.y2,0
     ];
 
-    /* E preciso perguntar se ha algum standard
-    para os pontos, porque e impossivel coloca-los no/contra ou
-    sentido dos ponteiros do relogio sem termos a certeza da sua
-    posicao */
-    // TODO: Pintar ou nao os 2 lados da face consoante pedido
-    // TODO: Alterar consoante ser CCW ou CW
     this.indices = [
         3,1,0,
         0,2,3

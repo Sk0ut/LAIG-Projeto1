@@ -15,23 +15,17 @@ MyCylinderBody.prototype.constructor = MyCylinderBody;
 
 MyCylinderBody.prototype.initBuffers = function() {
     var angulo = 2*Math.PI/this.slices;
- 	var a = 0;
- 	var b = 0;
- 	
+	var draio = (this.tRadius - this.bRadius) / this.stacks;
 
 	this.vertices=[];
  	this.normals=[];
 
-    /* TODO: A cena de se considerar o raio na base e no topo. Nao e dificil mas ja tenho sono a mais lel */
  	for(i = 0; i < this.stacks+1;i++){
  		for(j = 0; j < this.slices;j++){
- 			/* As normais passam a ser iguais as coordenadas dos pontos */
- 			this.vertices.push(Math.cos(j*angulo),Math.sin(j*angulo),i/this.stacks);
+ 			/* TODO: Corrigir normais */
+ 			this.vertices.push((this.bRadius + (draio * i))*Math.cos(j*angulo),(this.bRadius + (draio * i))*Math.sin(j*angulo),i/this.stacks);
  			this.normals.push(Math.cos(j*angulo),Math.sin(j*angulo),0);
-			a+=1/this.stacks;
  		}
- 		a = 0;
- 		b+=1/this.slices;
  	}
 
  	this.indices=[];

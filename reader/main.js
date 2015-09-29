@@ -43,8 +43,8 @@ main=function()
 	// start
     app.run();
 
-    var data = new MySceneData();
-    console.log(data);
+//    var data = new MySceneData(filename);
+//    console.log(data);
 }
 
 ]);
