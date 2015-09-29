@@ -1,7 +1,7 @@
 <SCENE>
 
 <INITIALS>
-    <frustum near="0.0" far="20.0"/>                      <!-- frustum planes-->
+    <frustum near="0.1" far="500.0"/>                      <!-- frustum planes-->
     <translate x="ff" y="ff" z="ff" />                 <!-- initial translate -->
     <rotation axis="x" angle="ff" />                  <!-- initial rotation 3 -->
     <rotation axis="y" angle="ff" />                  <!-- initial rotation 2 -->
@@ -241,7 +241,7 @@
 
     </NODE>
 
-     <NODE id="perna1">       <!--   defines one intermediate node; may be repeated as necessary -->
+     <NODE id="pernamesa1">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
         <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
@@ -261,7 +261,7 @@
 
     </NODE>
 
-         <NODE id="perna2">       <!--   defines one intermediate node; may be repeated as necessary -->
+         <NODE id="pernamesa2">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
         <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
@@ -281,7 +281,7 @@
 
     </NODE>
 
-         <NODE id="perna3">       <!--   defines one intermediate node; may be repeated as necessary -->
+         <NODE id="pernamesa3">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
         <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
@@ -301,7 +301,7 @@
 
     </NODE>
 
-         <NODE id="perna4">       <!--   defines one intermediate node; may be repeated as necessary -->
+         <NODE id="pernamesa4">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
         <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
