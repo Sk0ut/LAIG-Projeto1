@@ -14,7 +14,7 @@
 
 	this.bBase = new MyCircle(scene,slices);
 	this.tBase = new MyCircle(scene,slices);
-	this.body = new MyCylinderBody(scene,height,bRadius,tRadius,stacks,slices);
+	this.body = new MyCylinderBody(scene,bRadius,tRadius,stacks,slices);
 
  	this.initBuffers();
  };
@@ -26,6 +26,7 @@ MyCylinder.prototype.display = function() {
 	/* Bottom circle */
 	this.scene.pushMatrix();
 		this.scene.scale(this.bRadius,this.bRadius,1);
+		this.scene.rotate(Math.PI, 0, 1, 0);
 		this.bBase.display();
 	this.scene.popMatrix();
 
@@ -42,34 +43,3 @@ MyCylinder.prototype.display = function() {
 		this.body.display();
 	this.scene.popMatrix();
 }
-
-MyCylinder.prototype.drawCylinder = function() {
-    var angulo = 2*Math.PI/this.slices;
- 	var a = 0;
- 	var b = 0;
- 	
-
-	this.vertices=[];
- 	this.normals=[];
-
-    /* TODO: A cena de se considerar o raio na base e no topo. Nao e dificil mas ja tenho sono a mais lel */
- 	for(i = 0; i < this.stacks+1;i++){
- 		for(j = 0; j < this.slices;j++){
- 			/* As normais passam a ser iguais as coordenadas dos pontos */
- 			this.vertices.push(Math.cos(j*angulo),Math.sin(j*angulo),i/this.stacks);
- 			this.normals.push(Math.cos(j*angulo),Math.sin(j*angulo),0);
-			a+=this.height/this.stacks;
- 		}
- 		a = 0;
- 		b+=this.height/this.stacks;
- 	}
-
- 	this.indices=[];
-
-	for(i=0; i < this.stacks;i++){
-		for(j=0; j < this.slices;j++){
-			this.indices.push(i*this.slices+j,i*this.slices+((j+1)%this.slices),(i+1)*this.slices+(j+1)%this.slices);
-			this.indices.push(i*this.slices+j,(i+1)*this.slices+((j+1)%this.slices),(i+1)*this.slices+j);
-		}
-	}
- };
