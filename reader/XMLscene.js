@@ -26,7 +26,7 @@ XMLscene.prototype.init = function (application) {
 };
 
 XMLscene.prototype.initObjects = function() {
-	this.rectangle = new MyTriangle(this,0,5,0,1,1,4,2,3,1);
+	this.rectangle = new MyRectangle(this, 0, 2, 1, 0);
 }
 
 XMLscene.prototype.initLights = function () {
