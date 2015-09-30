@@ -1,4 +1,6 @@
-function MySceneData(lsxFile) {
+function MyLSXScene(application, lsxFile) {
+    CGFscene.prototype.init.call(this, application);
+
     this.reader = new CGFXMLreader();
     this.reader.open('scenes/' + lsxFile, this);
 
@@ -11,14 +13,14 @@ function MySceneData(lsxFile) {
     this.elements = new SceneElements();
 }
 
-MySceneData.prototype = Object.create(Object.prototype);
-MySceneData.prototype.constructor = MySceneData;
+MyLSXScene.prototype = Object.create(CGFscene.prototype);
+MyLSXScene.prototype.constructor = MyLSXScene;
 
-MySceneData.prototype.onXMLReady = function() {
+MyLSXScene.prototype.onXMLReady = function() {
     var rootElement = this.reader.xmlDoc.documentElement;
     console.log(rootElement.childNodes);
 }
 
-MySceneData.prototype.onXMLError = function(message) {
+MyLSXScene.prototype.onXMLError = function(message) {
     console.error("XML Loading Error: " + message);
 }

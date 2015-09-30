@@ -1,11 +1,7 @@
-function SceneLight() {
-    this.id = "";
-    this.enable = false;
-    this.position = {x: 0, y: 0, z: 0};
-    this.ambient = {r: 0, g: 0, b: 0, a: 0};
-    this.diffuse = {r: 0, g: 0, b: 0, a: 0};
-    this.specular = {r: 0, g: 0, b: 0, a: 0};
+function SceneLight(scene, an, id) {
+    CGFlight.call(this, scene, an);
+    this.id = id;
 }
 
-SceneLight.prototype = Object.create(Object.prototype);
+SceneLight.prototype = Object.create(CGFlight.prototype);
 SceneLight.prototype.constructor = SceneLight;
