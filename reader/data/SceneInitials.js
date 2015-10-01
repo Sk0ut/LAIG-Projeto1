@@ -2,17 +2,11 @@ function SceneInitials() {
     this.frustum = {near: 0,
                     far: 0};
 
-    this.translation = {x: 0,
-                        y: 0,
-                        z: 0};
+    this.translation = vec3.create();
 
-    this.rotation = {x: 0,
-                     y: 0,
-                     z: 0};
+    this.rotation = vec3.create();
                     
-    this.scaling = {x: 0,
-                    y: 0,
-                    z: 0};
+    this.scaling = vec3.create();
     
     this.referenceLength = 0;
 };

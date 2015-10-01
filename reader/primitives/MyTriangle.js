@@ -34,16 +34,18 @@ MyTriangle.prototype.initBuffers = function() {
 
     this.indices = [0,1,2];
 
-	var A = {x: this.x1-this.x2, y: this.y1-this.y2, z: this.z1-this.z2};
-	var B = {x: this.x1-this.x3, y: this.y1-this.y3, z: this.z1-this.z3};
-	var N = {x: A.y*B.z-A.z*B.y, y: A.z*B.x-A.x*B.z, z: A.x*B.y-A.y*B.x};
+	var A = vec3.fromValues(this.x1-this.x2, this.y1-this.y2, this.z1-this.z2);
+	var B = vec3.fromValues(this.x1-this.x3, this.y1-this.y3, this.z1-this.z3);
+	var N = vec3.create();
+	vec3.cross(N, A, B);
 
 	this.normals = [
-		N.x, N.y, N.z,
-		N.x, N.y, N.z,
-		N.x, N.y, N.z
-    ]
+		N[0], N[1], N[2],
+		N[0], N[1], N[2],
+		N[0], N[1], N[2],
+    ];
 
+	// Fix texCoords
 	this.texCoords = [
 		0, 0,
 		1, 0,
