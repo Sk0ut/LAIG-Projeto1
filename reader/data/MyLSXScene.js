@@ -20,8 +20,7 @@ MyLSXScene.prototype.init = function (application) {
     this.gl.enable(this.gl.DEPTH_TEST);
 	this.gl.enable(this.gl.CULL_FACE);
     this.gl.depthFunc(this.gl.LEQUAL);
-
-	//this.axis=new CGFaxis(this);
+    this.enableTextures(true);
 };
 
 MyLSXScene.prototype.initObjects = function() {
