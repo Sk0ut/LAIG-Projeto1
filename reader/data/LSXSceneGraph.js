@@ -9,6 +9,7 @@ function LSXSceneGraph(filename, scene) {
     this.illumination = new SceneIllumination();
     this.lights = [];
     this.textures = [];
+    this.materials = [];
     this.leaves = [];
 
 
@@ -299,6 +300,21 @@ LSXSceneGraph.prototype.parseMaterials = function(rootElement) {
 	}
 
 	var materials = elems[0];
+
+	for(var i = 0; i < materials.children.length; ++i){
+		var material = materials.children[i];
+		var id = this.reader.getString(material,"id");
+		this.materials.push(new SceneMaterial(this.scene,id));
+		var shininess = this.reader.getFloat(material.children[0],"value");
+		this.materials[i].setShininess(shininess);
+		var data = this.reader.getRGBA(material.children[1]);
+		this.materials[i].setSpecular(data[0],data[1],data[2],data[3]);
+		data = this.reader.getRGBA(material.children[2]);
+		this.materils[i].setDiffuse(data[0],data[1],data[2],data[3]);
+		data = this.reader.getRGBA(material.children[3]);
+		this.materials[i].setAmbient(data[0],data[1],data[2],data[3]);
+
+	}
 }
 
 LSXSceneGraph.prototype.parseLeaves = function(rootElement) {
