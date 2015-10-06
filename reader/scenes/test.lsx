@@ -24,27 +24,27 @@
 
 <LIGHTS>
     <LIGHT id="luz_teto">                                    <!-- light identifier -->
-        <enable value= "1" />                         <!-- enable/disable -->
-        <position x="4.0" y="2.0" z="2.0" w="1.0" />       <!-- light position -->
-        <ambient r="0.0" g="1.0" b="0.0" a="1.0" />        <!-- ambient component -->
-        <diffuse r="0.0" g="1.0" b="0.0" a="1.0" />        <!-- diffuse component -->
-        <specular r="0.0" g="1.0" b="0.0" a="1.0" />       <!-- specular component -->
+        <enable value= "0" />                         <!-- enable/disable -->
+        <position x="2.0" y="3.0" z="3.0" w="1.0" />       <!-- light position -->
+        <ambient r="0.1" g="0.1" b="0.1" a="1.0" />        <!-- ambient component -->
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />        <!-- diffuse component -->
+        <specular r="0.5" g="0.5" b="0.5 " a="1.0" />       <!-- specular component -->
     </LIGHT>
 
     <LIGHT id="luz_teto2">                                    <!-- light identifier -->
         <enable value= "1" />                         <!-- enable/disable -->
         <position x="2.0" y="4.0" z="2.0" w="1.0" />       <!-- light position -->
-        <ambient r="1.0" g="0.0" b="0.0" a="1.0" />        <!-- ambient component -->
-        <diffuse r="1.0" g="0.0" b="0.0" a="1.0" />        <!-- diffuse component -->
-        <specular r="1.0" g="0.0" b="0.0" a="1.0" />       <!-- specular component -->
+        <ambient r="0.5" g="0.0" b="0.0" a="1.0" />        <!-- ambient component -->
+        <diffuse r="0.5" g="0.0" b="0.0" a="1.0" />        <!-- diffuse component -->
+        <specular r="0.5" g="0.0" b="0.0" a="1.0" />       <!-- specular component -->
     </LIGHT>
 
     <LIGHT id="luz_teto3">                                    <!-- light identifier -->
-        <enable value= "1" />                         <!-- enable/disable -->
+        <enable value= "0" />                         <!-- enable/disable -->
         <position x="2.0" y="2.0" z="4.0" w="1.0" />       <!-- light position -->
-        <ambient r="0.0" g="0.0" b="1.0" a="1.0" />        <!-- ambient component -->
-        <diffuse r="0.0" g="0.0" b="1.0" a="1.0" />        <!-- diffuse component -->
-        <specular r="0.0" g="0.0" b="1.0" a="1.0" />       <!-- specular component -->
+        <ambient r="0.0" g="0.0" b="0.5" a="1.0" />        <!-- ambient component -->
+        <diffuse r="0.0" g="0.0" b="0.5" a="1.0" />        <!-- diffuse component -->
+        <specular r="0.0" g="0.0" b="0.5" a="1.0" />       <!-- specular component -->
     </LIGHT>
 
     <!-- NOTE: this block "LIGHT" must be repeated as necessary with different "id" -->
@@ -121,7 +121,7 @@
 <LEAVES>
 
     <!-- next lines define nodes of type leaf; they may be repeated, in any order, as necessary -->
-    <LEAF id="square" type="rectangle" args="0.0 1.0 0.0 1.0" />
+    <LEAF id="square" type="rectangle" args="0.0 1.0 1.0 0.0" />
     <LEAF id="cylinder" type="cylinder" args="1.0 1.0 1.0 20 20" /> 
     <LEAF id="sphere" type="sphere" args="1.0 20 20" />
     <LEAF id="lamp" type="cylinder" args="1.0 1.0 0.3 20 20" />

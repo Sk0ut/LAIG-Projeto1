@@ -7,6 +7,7 @@ function LSXSceneGraph(filename, scene) {
 	
     this.initials = new SceneInitials();
     this.illumination = new SceneIllumination();
+    this.lights = [];
     this.textures = [];
     this.leaves = [];
 
@@ -223,6 +224,34 @@ LSXSceneGraph.prototype.parseLights = function(rootElement) {
 	}
 
 	var lights = elems[0];
+
+	for (var i = 0; i < lights.children.length; ++i) {
+		var light = lights.children[i];
+		var id = this.reader.getString(light, "id");
+		this.lights.push(new SceneLight(this.scene, i, id));
+
+		var enable = this.reader.getBoolean(light.children[0], "value");
+		if (enable)
+			this.lights[i].enable();
+		else
+			this.lights[i].disable();
+
+		var data = [];
+		data.push(this.reader.getFloat(light.children[1], "x"));
+		data.push(this.reader.getFloat(light.children[1], "y"));
+		data.push(this.reader.getFloat(light.children[1], "z"));
+		data.push(this.reader.getFloat(light.children[1], "w"));
+		this.lights[i].setPosition(data[0], data[1], data[2], data[3]);
+
+		data = this.reader.getRGBA(light.children[2]);
+		this.lights[i].setAmbient(data[0], data[1], data[2], data[3]);
+
+		data = this.reader.getRGBA(light.children[3]);
+		this.lights[i].setDiffuse(data[0], data[1], data[2], data[3]);
+
+		data = this.reader.getRGBA(light.children[4]);
+		this.lights[i].setSpecular(data[0], data[1], data[2], data[3]);
+	}
 }
 
 LSXSceneGraph.prototype.parseTextures = function(rootElement) {
@@ -254,9 +283,9 @@ LSXSceneGraph.prototype.parseTextures = function(rootElement) {
 		var url = this.reader.getString(texture.children[0], "path");
 		var s = this.reader.getFloat(texture.children[1], "s");
 		var t = this.reader.getFloat(texture.children[1], "t");
-/*		this.textures.push(new SceneTexture(this.scene, url, id));
+		this.textures.push(new SceneTexture(this.scene, url, id));
 		this.textures[i].setAmplifyFactor(s,t);
-*/	}
+	}
 }
 
 LSXSceneGraph.prototype.parseMaterials = function(rootElement) {
@@ -300,23 +329,23 @@ LSXSceneGraph.prototype.parseLeaves = function(rootElement) {
 
 		switch (type) {
 			case "rectangle":
-			data = this.reader.getRectangle(elems[i], "args");
-			this.leaves.push(new SceneGraphLeafRectangle(id, data[0], data[1], data[2], data[3]));
-			break;
+				data = this.reader.getRectangle(elems[i], "args");
+				this.leaves.push(new SceneGraphLeafRectangle(id, data[0], data[1], data[2], data[3]));
+				break;
 			case "cylinder":
-			data = this.reader.getCylinder(elems[i], "args");
-			this.leaves.push(new SceneGraphLeafCylinder(id, data[0], data[1], data[2], data[3], data[4]));
-			break;
+				data = this.reader.getCylinder(elems[i], "args");
+				this.leaves.push(new SceneGraphLeafCylinder(id, data[0], data[1], data[2], data[3], data[4]));
+				break;
 			case "sphere":
-			data = this.reader.getSphere(elems[i], "args");
-			this.leaves.push(new SceneGraphLeafSphere(id, data[0], data[1], data[2]));
-			break;
+				data = this.reader.getSphere(elems[i], "args");
+				this.leaves.push(new SceneGraphLeafSphere(id, data[0], data[1], data[2]));
+				break;
 			case "triangle":
-			data = this.reader.getTriangle(elems[i], "args");
-			this.leaves.push(new SceneGraphLeafTriangle(id, data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]));
-			break;
+				data = this.reader.getTriangle(elems[i], "args");
+				this.leaves.push(new SceneGraphLeafTriangle(id, data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]));
+				break;
 			default:
-			return "Unknown LEAF type: " + type;
+				return "Unknown LEAF type: " + type;
 		}
 	}
 }
@@ -342,5 +371,3 @@ LSXSceneGraph.prototype.onXMLError=function (message) {
 	console.error("XML Loading Error: "+message);	
 	this.loadedOk=false;
 };
-
-

@@ -1,5 +1,5 @@
 function SceneTexture(scene, url, id) {
-    CGFtexture.call(scene, url);
+    CGFtexture.call(this, scene, url);
     this.id = id;
     this.amplifyFactor = {s: 1,
                           t: 1};

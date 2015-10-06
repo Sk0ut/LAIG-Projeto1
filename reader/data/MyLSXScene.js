@@ -30,10 +30,6 @@ MyLSXScene.prototype.initObjects = function() {
 MyLSXScene.prototype.initLights = function () {
 
     this.shader.bind();
-
-	this.lights[0].setPosition(2, 3, 3, 1);
-    this.lights[0].setDiffuse(1.0,1.0,1.0,1.0);
-    this.lights[0].update();
  
     this.shader.unbind();
 };
@@ -58,8 +54,11 @@ MyLSXScene.prototype.onGraphLoaded = function ()
 	   
 	this.gl.clearColor(this.graph.illumination.background[0],this.graph.illumination.background[1],this.graph.illumination.background[2],this.graph.illumination.background[3]);
 	this.setGlobalAmbientLight(this.graph.illumination.ambient[0],this.graph.illumination.ambient[1],this.graph.illumination.ambient[2],this.graph.illumination.ambient[3]);
-	//this.lights[0].setVisible(true);
-    this.lights[0].enable();
+
+    for (var i = 0; i < this.graph.lights.length; ++i) {
+    	this.lights[i] = this.graph.lights[i];
+    	this.lights[i].setVisible(true);
+    }
 };
 
 MyLSXScene.prototype.display = function () {
@@ -93,8 +92,9 @@ MyLSXScene.prototype.display = function () {
 	// This is one possible way to do it
 	if (this.graph.loadedOk)
 	{
-		this.lights[0].update();
-	};	
+		for (var i = 0; i < this.lights.length; ++i)
+			this.lights[i].update();
+	}	
 
     this.shader.unbind();
 };
