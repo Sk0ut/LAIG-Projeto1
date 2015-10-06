@@ -1,12 +1,17 @@
+  <!--
+  TODO: BANCOS PARA O BALCAO
+        VER SE E POSSIVEL POR MEIOS CILINDROS COMO ENCOSTO DE SOFA
+  -->
+
 <SCENE>
 
 <INITIALS>
     <frustum near="0.1" far="500.0"/>                      <!-- frustum planes-->
-    <translation x="ff" y="ff" z="ff" />                 <!-- initial translate -->
-    <rotation axis="x" angle="ff" />                  <!-- initial rotation 3 -->
-    <rotation axis="y" angle="ff" />                  <!-- initial rotation 2 -->
-    <rotation axis="z" angle="ff" />                  <!-- initial rotation 1 -->
-    <scale sx="ff" sy="ff" sz="ff" />                  <!-- initial scaling -->
+    <translate x="0" y="0" z="0" />                 <!-- initial translate -->
+    <rotation axis="x" angle="0" />                  <!-- initial rotation 3 -->
+    <rotation axis="y" angle="0" />                  <!-- initial rotation 2 -->
+    <rotation axis="z" angle="0" />                  <!-- initial rotation 1 -->
+    <scale sx="1" sy="1" sz="1" />                  <!-- initial scaling -->
     <reference length="5.0" />                          <!-- axis length; "0" means no axis-->
 </INITIALS>
 
@@ -20,7 +25,7 @@
 
 <LIGHTS>
     <LIGHT id="luz_teto">                                    <!-- light identifier -->
-        <enable value ="1" />                         <!-- enable/disable -->
+        <enable value= "1" />                         <!-- enable/disable -->
         <position x="10.0" y="5.0" z="5.0" w="1.0" />       <!-- light position -->
         <ambient r="0.3" g="0.3" b="0.3" a="1.0" />        <!-- ambient component -->
         <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />        <!-- diffuse component -->
@@ -33,12 +38,52 @@
 
 
 <TEXTURES>
-	<!--
-    <TEXTURE id="ss">
-        <file path="ss" />                            
-        <amplif_factor s="ff" t="ff" />                
+	
+    <TEXTURE id="floor">
+        <file path="textures/floor.png" />                            
+        <amplif_factor s="1" t="1" />                
     </TEXTURE> 
-	-->
+
+    <TEXTURE id="wood">
+        <file path="textures/wood.png" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE> 
+
+    <TEXTURE id="sofa">
+        <file path="textures/sofa.jpg" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE> 
+
+    <TEXTURE id="chair">
+        <file path="textures/chair.jpg" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE> 
+
+    <TEXTURE id="steel">
+        <file path="textures/steel.jpg" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE> 
+
+    <TEXTURE id="oven">
+        <file path="textures/oven.jpg" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE> 
+
+    <TEXTURE id="stove">
+        <file path="textures/stove.jpg" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE> 
+
+    <TEXTURE id="fridge">
+        <file path="textures/fridge.jpg" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+
+    <TEXTURE id="drawers">
+        <file path="textures/drawers.jpg" />                            
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE> 
+	
     <!-- NOTE: this block "TEXTURE" must be repeated as necessary with different "id" -->
     
 </TEXTURES>
@@ -64,7 +109,7 @@
     <LEAF id="square" type="rectangle" args="0.0 1.0 0.0 1.0" />
     <LEAF id="cylinder" type="cylinder" args="1.0 1.0 1.0 20 20" /> 
     <LEAF id="sphere" type="sphere" args="1.0 20 20" />
-    <LEAF id="lamp" tyle="cylinder" args="1.0 1.0 0.3 20 20" />
+    <LEAF id="lamp" type="cylinder" args="1.0 1.0 0.3 20 20" />
 
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->
@@ -80,12 +125,15 @@
     <ROOT id="sala" />     <!-- identifier of root node of the scene graph; this node     -->
                          <!--   must be defined in one of the following NODE declarations -->
 
+
+    <!------------------------------------ SALA ----------------------------------------------------->
+
     <NODE id="sala">       <!--   defines one intermediate node; may be repeated as necessary -->
 
         <!-- next two lines are mandatory -->
         <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
                                   <!-- id="null" maintains material from parent node        -->
-        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+        <TEXTURE id="clear" />       <!-- declared texture superimposes the texture received from parent node -->
                                   <!-- id="null" maintains texture from parent node       -->
                                   <!-- id="clear" clears texture declaration received from parent node      -->
 
@@ -102,6 +150,8 @@
         </DESCENDANTS>
 
     </NODE>
+
+    <!------------------------------------------------- CUBO -------------------------------------------->
 
     <NODE id="cubesquare1">       <!--   defines one intermediate node; may be repeated as necessary -->
 
@@ -532,6 +582,549 @@
         </DESCENDANTS>
 
     </NODE>
+
+    <!---------------------------------------------------------- CANDEEIRO ---------------------------------------------------------------->
+
+    <NODE id="candeeirobase">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+        <SCALE sx="1" sy="0.2" sz="1" />
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="candeeirope">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="1.1" z="0" />
+        <SCALE sx="0.5" sy="2" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="candeeiroabajur">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+        
+        <TRANSLATION x="0" y="1.85" z="0" />
+        <SCALE sx="1.5" sy="1.5" sz="1.5" />
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="lamp" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="candeeiro">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+        <TRANSLATION x="0" y="0.1" z="0" />
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="candeeiroabajur" />
+           <DESCENDANT id="candeeirope" />
+           <DESCENDANT id="candeeirobase" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <!---------------------------------------------------- TELEVISAO ------------------------------------------>
+ 
+    <NODE id="televisaosuporte">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <SCALE sx="6" sy="0.5" sz="2" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="televisaope">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="1.75" z="-1" />
+        <SCALE sx="2" sy="3" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="televisaomonitor">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="5" z="-0.5" />
+        <SCALE sx="6" sy="3" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+     <NODE id="televisaovisor">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0.75" y="2.75" z="-0.5" />
+        <SCALE sx="4.5" sy="2.5" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="rectangle" />
+        </DESCENDANTS>
+
+    </NODE>
+
+     <NODE id="televisao">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="2.75" z="0" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="televisaovisor" />
+           <DESCENDANT id="televisaomonitor" />
+           <DESCENDANT id="televisaope" />
+           <DESCENDANT id="televisaosuporte" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <!---------------------------------------------------- MESA NAO GENERICA ------------------------------------------>
+
+     <NODE id="mesangperna1">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="-2" y="2" z="-2" />
+        <SCALE sx="0.5" sy="4" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+           <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+         <NODE id="mesangperna2">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="2" y="2" z="-2" />
+        <SCALE sx="0.5" sy="4" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+         <NODE id="mesangperna3">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="-2" y="2" z="2" />
+        <SCALE sx="0.5" sy="4" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="mesangperna4">       <!--   defines one intermediate node; may be repeated as necessary -->
+
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="2" y="2" z="2" />
+        <SCALE sx="0.5" sy="4" sz="0.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="mesangcorpo">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="3" y="2.25" z="3" />
+        <SCALE sx="3" sy="3.5" sz="3" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+     <NODE id="mesangtampo">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="4" z="0" />
+        <SCALE sx="3" sy="0.1" sz="3" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="mesang">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="mesangcorpo" />
+            <DESCENDANT id="mesangtampo" />
+            <DESCENDANT id="mesangperna1" />
+            <DESCENDANT id="mesangperna2" />
+            <DESCENDANT id="mesangperna3" />
+            <DESCENDANT id="mesangperna4" />
+        </DESCENDANTS>
+    </NODE>
+
+    <!--------------------------------------------------------- PORTA ------------------------------------------------------>
+
+    <NODE id="porta">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="2.5" z="0" />
+        <SCALE sx="0.1" sy="5" sz="12" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <!------------------------------------------------------ FRIGORIFICO ------------------------------------------------------>
+
+    <NODE id="frigorifico">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="2.5" z="0" />
+        <SCALE sx="0.1" sy="5" sz="2" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+     <!------------------------------------------------------ FORNO ------------------------------------------------------>
+
+    <NODE id="forno">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="1.25" z="0" />
+        <SCALE sx="2.5" sy="2.5" sz="2.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <!------------------------------------------------------ FOGAO ------------------------------------------------------>
+
+    <NODE id="fogao">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="2.5" z="0" />
+        <SCALE sx="2.5" sy="0.1" sz="2.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <!--------------------------------------------------MICROONDAS--------------------------------------------------->
+
+     <NODE id="microondas">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="0.25" z="0" />
+        <SCALE sx="1.5" sy="0.5" sz="1" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+     <!--------------------------------------------------CANDEEIRO DE TETO --------------------------------------------------->
+
+     <NODE id="tetocandeeiro">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="0.75" z="0" />
+        <SCALE sx="1.5" sy="1.5" sz="1.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="sphere" />
+        </DESCENDANTS>
+    </NODE>
+
+     <!--------------------------------------------------PRATELEIRA --------------------------------------------------->
+
+     <NODE id="prateleira">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="0.1" z="0" />
+        <SCALE sx="2" sy="0.20" sz="1" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <!--------------------------------------------------BALCAO --------------------------------------------------->
+
+     <NODE id="balcaohorizontal">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="0.5" z="0" />
+        <SCALE sx="5" sy="1" sz="1" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="balcaovertical">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="0" y="0.5" z="0" />
+        <SCALE sx="1" sy="1" sz="2.5" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <!--------------------------------------------------SOFA --------------------------------------------------->
+
+    <NODE id="perna1sofa">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="-3" y="0.35" z="0" />
+        <SCALE sx="1" sy="0.70" sz="2" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+
+    <NODE id="perna2sofa">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="3" y="0.35" z="0" />
+        <SCALE sx="1" sy="0.70" sz="2" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="assentosofa">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="3" y="0.20" z="-0.1" />
+        <SCALE sx="5" sy="0.40" sz="1.6" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="encostosofa">
+        <!-- next two lines are mandatory -->
+        <MATERIAL id="cenas" />      <!-- declared material superimposes the material received from parent node -->
+                                  <!-- id="null" maintains material from parent node        -->
+        <TEXTURE id="null" />       <!-- declared texture superimposes the texture received from parent node -->
+                                  <!-- id="null" maintains texture from parent node       -->
+                                  <!-- id="clear" clears texture declaration received from parent node      -->
+
+        <TRANSLATION x="3" y="0.20" z="-0.3" />
+        <SCALE sx="5" sy="0.40" sz="0.2" />
+
+        <!-- declaring descendents, ate least one node or one leaf must be present -->
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
 </NODES>
 
 </SCENE>
