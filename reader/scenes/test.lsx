@@ -26,9 +26,9 @@
     <LIGHT id="luz_teto">                                    <!-- light identifier -->
         <enable value= "1" />                         <!-- enable/disable -->
         <position x="10.0" y="5.0" z="5.0" w="1.0" />       <!-- light position -->
-        <ambient r="0.3" g="0.3" b="0.3" a="1.0" />        <!-- ambient component -->
-        <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />        <!-- diffuse component -->
-        <specular r="0.8" g="0.8" b="0.8" a="1.0" />       <!-- specular component -->
+        <ambient r="0.0" g="1.0" b="0.0" a="1.0" />        <!-- ambient component -->
+        <diffuse r="0.0" g="1.0" b="0.0" a="1.0" />        <!-- diffuse component -->
+        <specular r="0.0" g="1.0" b="0.0" a="1.0" />       <!-- specular component -->
     </LIGHT>
 
     <!-- NOTE: this block "LIGHT" must be repeated as necessary with different "id" -->
