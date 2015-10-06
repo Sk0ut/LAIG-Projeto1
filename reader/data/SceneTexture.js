@@ -1,14 +1,14 @@
-function SceneTexture(filePath, id) {
-    this.filePath = filePath;
+function SceneTexture(scene, url, id) {
+    CGFtexture.call(scene, url);
     this.id = id;
-    this.amplifFactor = {s: 1,
-                         t: 1};
+    this.amplifyFactor = {s: 1,
+                          t: 1};
 };
 
-SceneTexture.prototype = Object.create(Object.prototype);
+SceneTexture.prototype = Object.create(CGFtexture.prototype);
 SceneTexture.prototype.constructor = SceneTexture;
 
-SceneTexture.prototype.setAmpliFactor = function(s, t) {
-    this.amplifFactor.s = s;
-    this.amplifFactor.t = t;
-};
+SceneTexture.prototype.setAmplifyFactor = function(s, t) {
+    this.amplifyFactor.s = s;
+    this.amplifyFactor.t = t;
+}

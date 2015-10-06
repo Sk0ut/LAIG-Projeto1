@@ -2,7 +2,8 @@ function SceneGraphNode() {
     this.id = "";
     this.material = "";
     this.texture = "";
-    this.transformations = [];
+    this.transformationMatrix = mat4.create();
+    mat4.identity(this.transformationMatrix);
     this.descendants = [];
 }
 

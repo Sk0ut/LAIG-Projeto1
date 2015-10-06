@@ -38,6 +38,7 @@ MyTriangle.prototype.initBuffers = function() {
 	var B = vec3.fromValues(this.x1-this.x3, this.y1-this.y3, this.z1-this.z3);
 	var N = vec3.create();
 	vec3.cross(N, A, B);
+	vec3.normalize(N, N);
 
 	this.normals = [
 		N[0], N[1], N[2],

@@ -15,13 +15,16 @@ serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
 'primitives/MyTriangle.js', 'primitives/MyRectangle.js', 'primitives/MyCylinder.js', 'primitives/MyCircle.js',
 'primitives/MyCylinderBody.js', 'primitives/MySphere.js',
 'data/MyLSXScene.js', 'data/SceneInitials.js', 'data/SceneIllumination.js',
-'data/SceneElements.js', 'data/SceneLight.js',
+'data/SceneElements.js', 'data/SceneLight.js', 'data/LSXSceneGraph.js',
+'data/LSXReader.js', 'data/SceneTexture.js', 'data/SceneGraphLeaf.js',
+'data/SceneGraphLeafCylinder.js', 'data/SceneGraphLeafRectangle.js',
+'data/SceneGraphLeafSphere.js', 'data/SceneGraphLeafTriangle.js',
 
 main=function()
 {
 	// Standard application, scene and interface setup
     var app = new CGFapplication(document.body);
-    var myScene = new XMLscene();
+    var myScene = new MyLSXScene();
     var myInterface = new CGFinterface();
 
     app.init();
@@ -34,11 +37,11 @@ main=function()
 	// get file name provided in URL, e.g. http://localhost/myproj/?file=myfile.xml 
 	// or use "demo.xml" as default (assumes files in subfolder "scenes", check MySceneGraph constructor) 
 	
-	var filename=getUrlVars()['file'] || "demo.xml";
+	var filename=getUrlVars()['file'] || "test.lsx";
 
 	// create and load graph, and associate it to scene. 
 	// Check console for loading errors
-	var myGraph = new MySceneGraph(filename, myScene);
+	var myGraph = new LSXSceneGraph(filename, myScene);
 	
 	// start
     app.run();

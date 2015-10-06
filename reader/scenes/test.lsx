@@ -2,19 +2,18 @@
 
 <INITIALS>
     <frustum near="0.1" far="500.0"/>                      <!-- frustum planes-->
-    <translation x="ff" y="ff" z="ff" />                 <!-- initial translate -->
-    <rotation axis="x" angle="ff" />                  <!-- initial rotation 3 -->
-    <rotation axis="y" angle="ff" />                  <!-- initial rotation 2 -->
-    <rotation axis="z" angle="ff" />                  <!-- initial rotation 1 -->
-    <scale sx="ff" sy="ff" sz="ff" />                  <!-- initial scaling -->
+    <translation x="0" y="0" z="0" />                 <!-- initial translate -->
+    <rotation axis="x" angle="0" />                  <!-- initial rotation 3 -->
+    <rotation axis="y" angle="0" />                  <!-- initial rotation 2 -->
+    <rotation axis="z" angle="0" />                  <!-- initial rotation 1 -->
+    <scale sx="1" sy="1" sz="1" />                  <!-- initial scaling -->
     <reference length="5.0" />                          <!-- axis length; "0" means no axis-->
 </INITIALS>
 
 
 <ILLUMINATION>
-    <ambient r="0.3" g="0.3" b="0.3" a="1.0" />            <!-- global ambient -->
-    <doubleside value="1" />                          <!-- double or single side illum. -->
-    <background r="0.0" g="0.0" b="0.0" a="0.0" />         <!-- background color -->
+    <ambient r="0.0" g="0.0" b="0.0" a="0.0" />            <!-- global ambient -->
+    <background r="0.4" g="0.4" b="0.4" a="1.0" />         <!-- background color -->
 </ILLUMINATION>
 
 
@@ -33,12 +32,17 @@
 
 
 <TEXTURES>
-	<!--
-    <TEXTURE id="ss">
-        <file path="ss" />                            
-        <amplif_factor s="ff" t="ff" />                
+	
+    <TEXTURE id="SomeTexture">
+        <file path="texture.png" />                            
+        <amplif_factor s="2.5" t="3" />                
+    </TEXTURE>
+
+	<TEXTURE id="SomeTexture2">
+        <file path="texture.png" />                            
+        <amplif_factor s="3" t="3" />                
     </TEXTURE> 
-	-->
+	
     <!-- NOTE: this block "TEXTURE" must be repeated as necessary with different "id" -->
     
 </TEXTURES>
@@ -64,7 +68,7 @@
     <LEAF id="square" type="rectangle" args="0.0 1.0 0.0 1.0" />
     <LEAF id="cylinder" type="cylinder" args="1.0 1.0 1.0 20 20" /> 
     <LEAF id="sphere" type="sphere" args="1.0 20 20" />
-    <LEAF id="lamp" tyle="cylinder" args="1.0 1.0 0.3 20 20" />
+    <LEAF id="lamp" type="cylinder" args="1.0 1.0 0.3 20 20" />
 
     <!-- Parameters of the above primitives:                                                         -->
         <!--rectangle: 2D coordinates for left-top and right-bottom vertices.                        -->

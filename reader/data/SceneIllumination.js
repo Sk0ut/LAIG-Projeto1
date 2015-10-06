@@ -1,7 +1,6 @@
 function SceneIllumination() {
-    this.ambient = {r: 0, g: 0, b: 0, a: 0};
-    this.doubleside = false;
-    this.background = {r: 0, g: 0, b: 0, a: 0};
+    this.ambient = [0, 0, 0, 0];
+    this.background = [0, 0, 0, 0];
 }
 
 SceneIllumination.prototype = Object.create(Object.prototype);
