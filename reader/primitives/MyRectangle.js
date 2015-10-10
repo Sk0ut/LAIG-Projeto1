@@ -39,13 +39,24 @@ MyRectangle.prototype.initBuffers = function() {
 			0,0,1
     ];
 
-	this.texCoords = [
-		0, 0,
-		1, 0,
-		1, 1,
-		0, 1
-	];
+    this.nonScaledTexCoords = [
+    	0, 0,
+    	1, 0,
+    	1, 1,
+    	0, 1
+    ];
+
+	this.texCoords = this.nonScaledTexCoords;
 
 	this.primitiveType=this.scene.gl.TRIANGLES;
 	this.initGLBuffers();
+}
+
+MyRectangle.prototype.scaleTexCoords = function(ampS, ampT) {
+	for (var i = 0; i < this.texCoords.length; i += 2) {
+		this.texCoords[i] = this.nonScaledTexCoords[i] / ampS;
+		this.texCoords[i + 1] = this.nonScaledTexCoords[i+1] / ampT;
+	}
+
+	this.updateTexCoordsGLBuffers();
 }
