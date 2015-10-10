@@ -141,7 +141,7 @@
                          <!--   must be defined in one of the following NODE declarations -->
 
 
-    <!------------------------------------ SALA ----------------------------------------------------->
+    <!-- SALA -->
 
     <NODE id="sala">       <!--   defines one intermediate node; may be repeated as necessary -->
 
@@ -166,7 +166,7 @@
 
     </NODE>
 
-    <!------------------------------------------------- CUBO -------------------------------------------->
+    <!-- CUBO -->
 
     <NODE id="cubesquare1">       <!--   defines one intermediate node; may be repeated as necessary -->
 
@@ -329,7 +329,7 @@
 
     </NODE>
 
-    <!-- ------------------------------------------------------------------ MESA ----------------------------------------------------> 
+    <!-- MESA --> 
 
 
     <NODE id="pernamesa1">       <!--   defines one intermediate node; may be repeated as necessary -->
@@ -454,7 +454,7 @@
     </NODE>
 
 
-	<!--------------------------------------------------------------- CADEIRA ---------------------------------------------------------->
+	<!-- CADEIRA -->
 
 	<NODE id="pernacadeira1">       <!--   defines one intermediate node; may be repeated as necessary -->
 
@@ -598,7 +598,7 @@
 
     </NODE>
 
-    <!---------------------------------------------------------- CANDEEIRO ---------------------------------------------------------------->
+    <!-- CANDEEIRO -->
 
     <NODE id="candeeirobase">       <!--   defines one intermediate node; may be repeated as necessary -->
 
@@ -671,7 +671,7 @@
 
     </NODE>
 
-    <!---------------------------------------------------- TELEVISAO ------------------------------------------>
+    <!-- TELEVISAO -->
  
     <NODE id="televisaosuporte">       <!--   defines one intermediate node; may be repeated as necessary -->
 
@@ -769,7 +769,7 @@
 
     </NODE>
 
-    <!---------------------------------------------------- MESA NAO GENERICA ------------------------------------------>
+    <!-- MESA NAO GENERICA -->
 
      <NODE id="mesangperna1">       <!--   defines one intermediate node; may be repeated as necessary -->
 
@@ -900,7 +900,7 @@
         </DESCENDANTS>
     </NODE>
 
-    <!--------------------------------------------------------- PORTA ------------------------------------------------------>
+    <!-- PORTA -->
 
     <NODE id="porta">
         <!-- next two lines are mandatory -->
@@ -919,7 +919,7 @@
         </DESCENDANTS>
     </NODE>
 
-    <!------------------------------------------------------ FRIGORIFICO ------------------------------------------------------>
+    <!-- FRIGORIFICO -->
 
     <NODE id="frigorifico">
         <!-- next two lines are mandatory -->
@@ -938,7 +938,7 @@
         </DESCENDANTS>
     </NODE>
 
-     <!------------------------------------------------------ FORNO ------------------------------------------------------>
+     <!-- FORNO -->
 
     <NODE id="forno">
         <!-- next two lines are mandatory -->
@@ -957,7 +957,7 @@
         </DESCENDANTS>
     </NODE>
 
-    <!------------------------------------------------------ FOGAO ------------------------------------------------------>
+    <!-- FOGAO -->
 
     <NODE id="fogao">
         <!-- next two lines are mandatory -->
@@ -976,7 +976,7 @@
         </DESCENDANTS>
     </NODE>
 
-    <!--------------------------------------------------MICROONDAS--------------------------------------------------->
+    <!-- MICROONDAS -->
 
      <NODE id="microondas">
         <!-- next two lines are mandatory -->
@@ -995,7 +995,7 @@
         </DESCENDANTS>
     </NODE>
 
-     <!--------------------------------------------------CANDEEIRO DE TETO --------------------------------------------------->
+     <!-- CANDEEIRO DE TETO -->
 
      <NODE id="tetocandeeiro">
         <!-- next two lines are mandatory -->
@@ -1014,7 +1014,7 @@
         </DESCENDANTS>
     </NODE>
 
-     <!--------------------------------------------------PRATELEIRA --------------------------------------------------->
+     <!-- PRATELEIRA -->
 
      <NODE id="prateleira">
         <!-- next two lines are mandatory -->
@@ -1033,7 +1033,7 @@
         </DESCENDANTS>
     </NODE>
 
-    <!--------------------------------------------------BALCAO --------------------------------------------------->
+    <!-- BALCAO -->
 
      <NODE id="balcaohorizontal">
         <!-- next two lines are mandatory -->
@@ -1069,7 +1069,7 @@
         </DESCENDANTS>
     </NODE>
 
-    <!--------------------------------------------------SOFA --------------------------------------------------->
+    <!-- SOFA -->
 
     <NODE id="perna1sofa">
         <!-- next two lines are mandatory -->

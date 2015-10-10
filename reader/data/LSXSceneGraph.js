@@ -11,6 +11,7 @@ function LSXSceneGraph(filename, scene) {
     this.textures = [];
     this.materials = [];
     this.leaves = [];
+    this.nodes = [];
 
 
 	// Establish bidirectional references between scene and graph
@@ -145,7 +146,21 @@ LSXSceneGraph.prototype.parseInitials = function(rootElement) {
         return "3 'rotation' elements needed in INITIALS";
     }
 
-    /* TODO: parse rotation */
+	var rotations = []
+    for (var i = 0; i < elems.length; ++i) {
+    	var rotation = elems[i];
+    	var axis = this.reader.getString(rotation, "axis");
+    	if (["x", "y", "z"].indexOf(axis) == -1)
+    		return "Unknow axis: " + axis;
+		if (axis in rotations)
+			return "Duplicate initial rotation on axis " + axis;
+
+    	var angle = this.reader.getString(rotation, "angle");
+    	rotations[axis] = angle;
+    }
+	mat4.rotateX(this.initials.transformationMatrix, this.initials.transformationMatrix, rotations["x"] * Math.PI / 180);
+	mat4.rotateY(this.initials.transformationMatrix, this.initials.transformationMatrix, rotations["y"] * Math.PI / 180);
+	mat4.rotateZ(this.initials.transformationMatrix, this.initials.transformationMatrix, rotations["z"] * Math.PI / 180);
 
     elems = initials.getElementsByTagName("scale");
 	if (elems == null) {
@@ -281,11 +296,14 @@ LSXSceneGraph.prototype.parseTextures = function(rootElement) {
 	for (var i = 0; i < elems.length; ++i) {
 		var texture = elems[i];
 		var id = this.reader.getString(texture, "id");
+		if (id in this.textures)
+			return "Duplicate texture id: " + id;
+
 		var url = this.reader.getString(texture.children[0], "path");
 		var s = this.reader.getFloat(texture.children[1], "s");
 		var t = this.reader.getFloat(texture.children[1], "t");
-		this.textures.push(new SceneTexture(this.scene, url, id));
-		this.textures[i].setAmplifyFactor(s,t);
+		this.textures[id] = new SceneTexture(this.scene, url, id);
+		this.textures[id].setAmplifyFactor(s,t);
 	}
 }
 
@@ -304,16 +322,18 @@ LSXSceneGraph.prototype.parseMaterials = function(rootElement) {
 	for(var i = 0; i < materials.children.length; ++i){
 		var material = materials.children[i];
 		var id = this.reader.getString(material,"id");
-		this.materials.push(new SceneMaterial(this.scene,id));
-		var shininess = this.reader.getFloat(material.children[0],"value");
-		this.materials[i].setShininess(shininess);
-		var data = this.reader.getRGBA(material.children[1]);
-		this.materials[i].setSpecular(data[0],data[1],data[2],data[3]);
-		data = this.reader.getRGBA(material.children[2]);
-		this.materils[i].setDiffuse(data[0],data[1],data[2],data[3]);
-		data = this.reader.getRGBA(material.children[3]);
-		this.materials[i].setAmbient(data[0],data[1],data[2],data[3]);
+		if (id in this.materials)
+			return "Duplicate material id: " + id;
 
+		this.materials[id] = new SceneMaterial(this.scene,id);
+		var shininess = this.reader.getFloat(material.children[0],"value");
+		this.materials[id].setShininess(shininess);
+		var data = this.reader.getRGBA(material.children[1]);
+		this.materials[id].setSpecular(data[0],data[1],data[2],data[3]);
+		data = this.reader.getRGBA(material.children[2]);
+		this.materials[id].setDiffuse(data[0],data[1],data[2],data[3]);
+		data = this.reader.getRGBA(material.children[3]);
+		this.materials[id].setAmbient(data[0],data[1],data[2],data[3]);
 	}
 }
 
@@ -339,26 +359,30 @@ LSXSceneGraph.prototype.parseLeaves = function(rootElement) {
 	}
 
 	for (var i = 0; i < elems.length; ++i) {
-		var id = this.reader.getString(elems[i], "id");
-		var type = this.reader.getString(elems[i], "type");
+		var leaf = elems[i]
+		var id = this.reader.getString(leaf, "id");
+		if (id in this.leaves)
+			return "Duplicate leaf id: " + id;
+
+		var type = this.reader.getString(leaf, "type");
 		var data;
 
 		switch (type) {
 			case "rectangle":
-				data = this.reader.getRectangle(elems[i], "args");
-				this.leaves.push(new SceneGraphLeafRectangle(id, data[0], data[1], data[2], data[3]));
+				data = this.reader.getRectangle(leaf, "args");
+				this.leaves[id] = new SceneGraphLeafRectangle(id, data[0], data[1], data[2], data[3]);
 				break;
 			case "cylinder":
-				data = this.reader.getCylinder(elems[i], "args");
-				this.leaves.push(new SceneGraphLeafCylinder(id, data[0], data[1], data[2], data[3], data[4]));
+				data = this.reader.getCylinder(leaf, "args");
+				this.leaves[id] = new SceneGraphLeafCylinder(id, data[0], data[1], data[2], data[3], data[4]);
 				break;
 			case "sphere":
-				data = this.reader.getSphere(elems[i], "args");
-				this.leaves.push(new SceneGraphLeafSphere(id, data[0], data[1], data[2]));
+				data = this.reader.getSphere(leaf, "args");
+				this.leaves[id] = new SceneGraphLeafSphere(id, data[0], data[1], data[2]);
 				break;
 			case "triangle":
-				data = this.reader.getTriangle(elems[i], "args");
-				this.leaves.push(new SceneGraphLeafTriangle(id, data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]));
+				data = this.reader.getTriangle(leaf, "args");
+				this.leaves[id] = new SceneGraphLeafTriangle(id, data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]);
 				break;
 			default:
 				return "Unknown LEAF type: " + type;
@@ -377,6 +401,84 @@ LSXSceneGraph.prototype.parseNodes = function(rootElement) {
 	}
 
 	var nodes = elems[0];
+	this.root = this.reader.getString(nodes.children[0], "id");
+
+	elems = nodes.getElementsByTagName("NODE");
+
+	if (elems == null) {
+		return "NODE element in NODES missing";
+	}
+	if (elems.length == 0) {
+		return "zero 'NODE' elements found"
+	}
+
+	for (var i = 0; i < elems.length; ++i) {
+		var node = elems[i];
+		error = this.parseNode(node);
+		if (error)
+			return error;
+	}
+}
+
+LSXSceneGraph.prototype.parseNode = function(node) {
+	var id = this.reader.getString(node, "id");
+	if (id in this.leaves)
+		return "Node id already in leaf: " + id;
+	if (id in this.nodes)
+		return "Duplicate node id: " + id;
+	
+	this.nodes[id] = new SceneGraphNode(id);
+
+	var material = this.reader.getString(node.children[0], "id");
+	this.nodes[id].setMaterial(material);
+
+	var texture = this.reader.getString(node.children[1], "id");
+	this.nodes[id].setTexture(texture);
+
+	for (var i = 2; i < node.children.length - 1; ++i) {
+		var transformation = node.children[i];
+		var type = transformation.nodeName;
+		switch (type) {
+			case "ROTATION":
+				var axis = this.reader.getString(transformation, "axis");
+				var angle = this.reader.getFloat(transformation, "angle");
+					switch (axis) {
+						case "x":
+							this.nodes[id].rotateX(angle * Math.PI / 180);
+							break;
+						case "y":
+							this.nodes[id].rotateY(angle * Math.PI / 180);
+							break;
+						case "z":
+							this.nodes[id].rotateZ(angle * Math.PI / 180);
+							break;
+						default:
+							return "Unknown rotation axis: " + axis;
+					}
+				break;
+			case "SCALE":
+				var sx = this.reader.getFloat(transformation, "sx");
+				var sy = this.reader.getFloat(transformation, "sy");
+				var sz = this.reader.getFloat(transformation, "sz");
+				this.nodes[id].scale(sx, sy, sz);
+				break;
+			case "TRANSLATION":
+				var x = this.reader.getFloat(transformation, "x");
+				var y = this.reader.getFloat(transformation, "y");
+				var z = this.reader.getFloat(transformation, "z");
+				this.nodes[id].translate(x, y, z);
+				break;
+			default:
+				return "Unknown transformation: " + type;
+		}
+	}
+
+	var descendants = node.children[node.children.length - 1];
+
+	for (var i = 0; i < descendants.children.length; ++i) {
+		var descendant = this.reader.getString(descendants.children[i], "id");
+		this.nodes[id].addDescendant(descendant);
+	}
 }
 	
 /*
