@@ -418,6 +418,17 @@ LSXSceneGraph.prototype.parseNodes = function(rootElement) {
 		if (error)
 			return error;
 	}
+
+	if (!(this.root in this.nodes))
+		return "Node with root id missing";
+
+	for (key in this.nodes) {
+		for (var i = 0; i < this.nodes[key].descendants.length; ++i) {
+			var descendant = this.nodes[key].descendants[i];
+			if (!((descendant in this.nodes) || (descendant in this.leaves)))
+				return "Descendant " + descendant + " missing";
+		}
+	}
 }
 
 LSXSceneGraph.prototype.parseNode = function(node) {
@@ -474,6 +485,9 @@ LSXSceneGraph.prototype.parseNode = function(node) {
 	}
 
 	var descendants = node.children[node.children.length - 1];
+
+	if (descendants.children.length == 0)
+		return "Node " + id + " with no descendants";
 
 	for (var i = 0; i < descendants.children.length; ++i) {
 		var descendant = this.reader.getString(descendants.children[i], "id");
