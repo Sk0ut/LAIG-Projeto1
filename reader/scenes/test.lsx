@@ -442,13 +442,13 @@
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
-            <DESCENDANT id="perna1" />       <!-- "ss" is the identifier of a node or of leaf; -->
+            <DESCENDANT id="pernamesa1" />       <!-- "ss" is the identifier of a node or of leaf; -->
                                          <!-- may be repeatad as necessary. It can refer an -->
                                          <!-- identifier of another node or leaf, later defined in the lsx file. -->
-            <DESCENDANT id="perna2" />
-            <DESCENDANT id="perna3" />
-            <DESCENDANT id="perna4" />
-            <DESCENDANT id="tampo" />
+            <DESCENDANT id="pernamesa2" />
+            <DESCENDANT id="pernamesa3" />
+            <DESCENDANT id="pernamesa4" />
+            <DESCENDANT id="tampomesa" />
         </DESCENDANTS>
 
     </NODE>
