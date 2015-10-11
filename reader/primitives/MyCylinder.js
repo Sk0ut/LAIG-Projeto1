@@ -1,6 +1,8 @@
-function MyCylinder(scene, bRadius, tRadius, stacks, slices) {
+function MyCylinder(scene, height, bRadius, tRadius, stacks, slices) {
  	CGFobject.call(this,scene);
 	
+	this.height = height;
+
 	this.slices=slices;
 	this.stacks=stacks;
 
@@ -11,11 +13,12 @@ function MyCylinder(scene, bRadius, tRadius, stacks, slices) {
 };
 
 MyCylinder.prototype = Object.create(CGFobject.prototype);
-MyCylinder.prototype.constructor = MyCylinderBody;
+MyCylinder.prototype.constructor = MyCylinder;
 
 MyCylinder.prototype.initBuffers = function() {
     var angulo = 2*Math.PI/this.slices;
-	var draio = (this.tRadius - this.bRadius) / this.stacks;
+	var dRadius = (this.tRadius - this.bRadius) / this.stacks;
+	var dHeight = this.height / this.stacks;
 
 	this.vertices=[];
  	this.normals=[];
@@ -23,7 +26,7 @@ MyCylinder.prototype.initBuffers = function() {
  	for(i = 0; i < this.stacks+1;i++){
  		for(j = 0; j < this.slices;j++){
  			/* TODO: Corrigir normais */
- 			this.vertices.push((this.bRadius + (draio * i))*Math.cos(j*angulo),(this.bRadius + (draio * i))*Math.sin(j*angulo),i/this.stacks);
+ 			this.vertices.push((this.bRadius + (dRadius * i))*Math.cos(j*angulo),(this.bRadius + (dRadius * i))*Math.sin(j*angulo),i * dHeight);
  			this.normals.push(Math.cos(j*angulo),Math.sin(j*angulo),0);
  		}
  	}
