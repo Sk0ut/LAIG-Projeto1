@@ -4,6 +4,7 @@ function LSXSceneGraph(filename, scene) {
 		return;
 	}
 	this.loadedOk = null;
+	this.filename = 'scenes/'+filename;
 	
     this.initials = new SceneInitials();
     this.illumination = new SceneIllumination();
@@ -27,7 +28,7 @@ function LSXSceneGraph(filename, scene) {
 	 * If any error occurs, the reader calls onXMLError on this object, with an error message
 	 */
 	 
-	this.reader.open('scenes/'+filename, this);  
+	this.reader.open(this.filename, this);  
 }
 
 /*
@@ -299,7 +300,7 @@ LSXSceneGraph.prototype.parseTextures = function(rootElement) {
 		if (id in this.textures)
 			return "Duplicate texture id: " + id;
 
-		var url = this.reader.getString(texture.children[0], "path");
+		var url = this.filename.substring(0, this.filename.lastIndexOf("/")) + '/' + this.reader.getString(texture.children[0], "path");
 		var s = this.reader.getFloat(texture.children[1], "s");
 		var t = this.reader.getFloat(texture.children[1], "t");
 		this.textures[id] = new SceneTexture(this.scene, url, id);
