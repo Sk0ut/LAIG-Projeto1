@@ -293,13 +293,15 @@ LSXSceneGraph.prototype.parseTextures = function(rootElement) {
 		return;
 	}
 
+	var baseUrl = this.filename.substring(0, this.filename.lastIndexOf("/"));
+
 	for (var i = 0; i < elems.length; ++i) {
 		var texture = elems[i];
 		var id = this.reader.getString(texture, "id");
 		if (id in this.textures)
 			return "Duplicate texture id: " + id;
 
-		var url = this.filename.substring(0, this.filename.lastIndexOf("/")) + '/' + this.reader.getString(texture.children[0], "path");
+		var url = baseUrl + '/' + this.reader.getString(texture.children[0], "path");
 		var s = this.reader.getFloat(texture.children[1], "s");
 		var t = this.reader.getFloat(texture.children[1], "t");
 		this.textures[id] = new SceneTexture(this.scene, url, id);
