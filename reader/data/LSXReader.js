@@ -59,7 +59,7 @@ LSXReader.prototype.getArrayOfFloats = function(element, attributeName, numFloat
         return null;
     }
 
-    var floats = attribute.split(' ');
+    var floats = attribute.match(/\S+/g);
     
     if (floats.length != numFloats) {
         console.error("invalid " + floats.length + " number of floats for attribute " + attributeName + ".");
