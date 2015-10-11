@@ -96,7 +96,6 @@ LSXSceneGraph.prototype.parseSceneGraph = function(rootElement) {
     this.loadedOk = true;
 }
 
-// TODO: parse rotation
 LSXSceneGraph.prototype.parseInitials = function(rootElement) {
 
 	var elems =  rootElement.getElementsByTagName("INITIALS");
