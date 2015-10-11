@@ -135,7 +135,7 @@ MyLSXScene.prototype.drawNode = function(node, parentMaterial, parentTexture) {
 
 		var texture;
 
-		if (parentTexture != "clear" && parentTexture != "null")
+		if (parentTexture != "clear")
 		{
 			texture = this.graph.textures[parentTexture];
 			this.primitives[node].scaleTexCoords(texture.amplifyFactor.s, texture.amplifyFactor.t);

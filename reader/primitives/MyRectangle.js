@@ -41,9 +41,9 @@ MyRectangle.prototype.initBuffers = function() {
 
     this.nonScaledTexCoords = [
     	0, 0,
-    	1, 0,
-    	1, 1,
-    	0, 1
+    	this.x2-this.x1, 0,
+    	this.x2-this.x1, this.y2-this.y1,
+    	0, this.y2-this.y1
     ];
 
 	this.texCoords = this.nonScaledTexCoords.slice(0);
