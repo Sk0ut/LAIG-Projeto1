@@ -125,12 +125,27 @@ MyLSXScene.prototype.display = function () {
 
 
 MyLSXScene.prototype.drawSceneGraph = function() {
-	this.drawNode(this.graph.root, "", "");
+	this.drawNode(this.graph.root, "null", "clear");
 }
 
-MyLSXScene.prototype.drawNode = function(node, material, texture) {
+MyLSXScene.prototype.drawNode = function(node, parentMaterial, parentTexture) {
 	if (node in this.primitives) {
+		if (parentMaterial != "null")
+			this.graph.materials[parentMaterial].apply();
+
+		var texture;
+
+		if (parentTexture != "clear")
+		{
+			texture = this.graph.textures[parentTexture];
+			this.primitives[node].scaleTexCoords(texture.amplifyFactor.s, texture.amplifyFactor.t);
+			texture.bind();
+		}
+					
 		this.primitives[node].display();
+
+		if (texture)
+			texture.unbind();
 		return;
 	}
 
@@ -138,9 +153,17 @@ MyLSXScene.prototype.drawNode = function(node, material, texture) {
 	
 	this.multMatrix(this.graph.nodes[node].transformationMatrix);
 
+	var material = this.graph.nodes[node].material;
+	if (material == "null")
+		material = parentMaterial;
+
+	var texture = this.graph.nodes[node].texture;
+	if (texture == "null")
+		texture = parentTexture;
+
 	var descendants = this.graph.nodes[node].descendants;
 	for (var i = 0; i < descendants.length; ++i) {
-		this.drawNode(descendants[i], "", "");
+		this.drawNode(descendants[i], material, texture);
 	}
 
 	this.popMatrix();
