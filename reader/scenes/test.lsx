@@ -743,7 +743,7 @@
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
-           <DESCENDANT id="rectangle" />
+           <DESCENDANT id="square" />
         </DESCENDANTS>
 
     </NODE>
