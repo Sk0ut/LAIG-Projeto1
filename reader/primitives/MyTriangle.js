@@ -45,8 +45,6 @@ MyTriangle.prototype.initBuffers = function() {
 
     var tC = (vec3.sqrLen(AB) + vec3.sqrLen(AC) - vec3.sqrLen(BC))/ (2 * vec3.length(AB));
 	var sC = Math.sqrt(vec3.sqrLen(AC) - tC * tC);
-
-	// Fix texCoords
 	this.nonScaledTexCoords = [
 		sC, tC,
 		0, 0,
