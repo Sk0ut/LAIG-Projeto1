@@ -1,45 +1,42 @@
-/**
- * MyCilinder / MyCone (come on, we can do a cone with this!)
- * @constructor
- */
- function MyCylinder(scene, height, bRadius, tRadius, stacks, slices) {
+function MyCylinderBody(scene, bRadius, tRadius, stacks, slices) {
  	CGFobject.call(this,scene);
 	
 	this.slices=slices;
 	this.stacks=stacks;
 
-	this.height=height;
 	this.bRadius = bRadius;
 	this.tRadius = tRadius;
 
-	this.bBase = new MyCircle(scene,slices);
-	this.tBase = new MyCircle(scene,slices);
-	this.body = new MyCylinderBody(scene,bRadius,tRadius,stacks,slices);
-
  	this.initBuffers();
+};
+
+MyCylinderBody.prototype = Object.create(CGFobject.prototype);
+MyCylinderBody.prototype.constructor = MyCylinderBody;
+
+MyCylinderBody.prototype.initBuffers = function() {
+    var angulo = 2*Math.PI/this.slices;
+	var draio = (this.tRadius - this.bRadius) / this.stacks;
+
+	this.vertices=[];
+ 	this.normals=[];
+
+ 	for(i = 0; i < this.stacks+1;i++){
+ 		for(j = 0; j < this.slices;j++){
+ 			/* TODO: Corrigir normais */
+ 			this.vertices.push((this.bRadius + (draio * i))*Math.cos(j*angulo),(this.bRadius + (draio * i))*Math.sin(j*angulo),i/this.stacks);
+ 			this.normals.push(Math.cos(j*angulo),Math.sin(j*angulo),0);
+ 		}
+ 	}
+
+ 	this.indices=[];
+
+	for(i=0; i < this.stacks;i++){
+		for(j=0; j < this.slices;j++){
+			this.indices.push(i*this.slices+j,i*this.slices+((j+1)%this.slices),(i+1)*this.slices+(j+1)%this.slices);
+			this.indices.push(i*this.slices+j,(i+1)*this.slices+((j+1)%this.slices),(i+1)*this.slices+j);
+		}
+	}
+	
+    this.primitiveType=this.scene.gl.TRIANGLES;
+	this.initGLBuffers();
  };
-
- MyCylinder.prototype = Object.create(CGFobject.prototype);
- MyCylinder.prototype.constructor = MyCylinder;
-
-MyCylinder.prototype.display = function() {
-	/* Bottom circle */
-	this.scene.pushMatrix();
-		this.scene.scale(this.bRadius,this.bRadius,1);
-		this.scene.rotate(Math.PI, 0, 1, 0);
-		this.bBase.display();
-	this.scene.popMatrix();
-
-	/* Top circle */
-	this.scene.pushMatrix();
-		this.scene.translate(0,0,this.height);
-		this.scene.scale(this.tRadius,this.tRadius,1);
-		this.tBase.display();
-	this.scene.popMatrix();
-
-	/* Body */
-	this.scene.pushMatrix();
-		this.scene.scale(1,1,this.height);
-		this.body.display();
-	this.scene.popMatrix();
-}
