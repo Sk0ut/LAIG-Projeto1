@@ -1,4 +1,4 @@
-function MyCylinderBody(scene, bRadius, tRadius, stacks, slices) {
+function MyCylinder(scene, bRadius, tRadius, stacks, slices) {
  	CGFobject.call(this,scene);
 	
 	this.slices=slices;
@@ -10,10 +10,10 @@ function MyCylinderBody(scene, bRadius, tRadius, stacks, slices) {
  	this.initBuffers();
 };
 
-MyCylinderBody.prototype = Object.create(CGFobject.prototype);
-MyCylinderBody.prototype.constructor = MyCylinderBody;
+MyCylinder.prototype = Object.create(CGFobject.prototype);
+MyCylinder.prototype.constructor = MyCylinderBody;
 
-MyCylinderBody.prototype.initBuffers = function() {
+MyCylinder.prototype.initBuffers = function() {
     var angulo = 2*Math.PI/this.slices;
 	var draio = (this.tRadius - this.bRadius) / this.stacks;
 
