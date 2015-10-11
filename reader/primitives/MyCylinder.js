@@ -22,23 +22,24 @@ MyCylinder.prototype.initBuffers = function() {
 
 	this.vertices=[];
  	this.normals=[];
+	this.texCoords=[];
 
- 	for(i = 0; i < this.stacks+1;i++){
- 		for(j = 0; j < this.slices;j++){
+ 	for (var stack = 0; stack <= this.stacks; ++stack) {
+ 		for (var slice = 0; slice <= this.slices; ++slice) {
  			/* TODO: Corrigir normais */
- 			this.vertices.push((this.bRadius + (dRadius * i))*Math.cos(j*angulo),(this.bRadius + (dRadius * i))*Math.sin(j*angulo),i * dHeight);
- 			this.normals.push(Math.cos(j*angulo),Math.sin(j*angulo),0);
+ 			this.vertices.push((this.bRadius + (dRadius * stack)) * Math.cos(slice*angulo),(this.bRadius + (dRadius * stack))*Math.sin(slice*angulo),stack * dHeight);
+ 			this.normals.push(Math.cos(slice*angulo),Math.sin(slice*angulo),0);
+ 			this.texCoords.push(slice/this.slices, stack/this.stacks);
  		}
  	}
 
  	this.indices=[];
-
-	for(i=0; i < this.stacks;i++){
-		for(j=0; j < this.slices;j++){
-			this.indices.push(i*this.slices+j,i*this.slices+((j+1)%this.slices),(i+1)*this.slices+(j+1)%this.slices);
-			this.indices.push(i*this.slices+j,(i+1)*this.slices+((j+1)%this.slices),(i+1)*this.slices+j);
-		}
-	}
+ 	for (var stack = 0; stack < this.stacks; ++stack) {
+ 		for (var slice = 0; slice < this.slices; ++slice) {
+ 			this.indices.push(stack * (this.stacks+1) + slice, stack * (this.stacks+1) + slice + 1, (stack+1) * (this.stacks+1) + slice + 1);
+ 			this.indices.push(stack * (this.stacks+1) + slice, (stack+1) * (this.stacks+1) + slice + 1, (stack+1) * (this.stacks+1) + slice);
+ 		}
+ 	}
 	
     this.primitiveType=this.scene.gl.TRIANGLES;
 	this.initGLBuffers();
