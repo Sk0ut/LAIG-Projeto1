@@ -142,6 +142,7 @@
             <DESCENDANT id="mesa1" />
             <DESCENDANT id="candeeiro1" />
             <DESCENDANT id="candeeiro2" />
+            <DESCENDANT id="televisao1" />
         </DESCENDANTS>
 
     </NODE>
@@ -669,7 +670,7 @@
                                   <!-- id="null" maintains texture from parent node       -->
                                   <!-- id="clear" clears texture declaration received from parent node      -->
 
-        <SCALE sx="6" sy="0.5" sz="2" />
+        <SCALE sx="1" sy="0.1" sz="0.3" />
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
@@ -687,8 +688,8 @@
                                   <!-- id="null" maintains texture from parent node       -->
                                   <!-- id="clear" clears texture declaration received from parent node      -->
 
-        <TRANSLATION x="0" y="1.75" z="-1" />
-        <SCALE sx="2" sy="3" sz="0.5" />
+        <TRANSLATION x="0.3" y="0.1" z="-0.05" />
+        <SCALE sx="0.3" sy="0.5" sz="0.1" />
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
@@ -706,8 +707,8 @@
                                   <!-- id="null" maintains texture from parent node       -->
                                   <!-- id="clear" clears texture declaration received from parent node      -->
 
-        <TRANSLATION x="0" y="5" z="-0.5" />
-        <SCALE sx="6" sy="3" sz="0.5" />
+        <TRANSLATION x="0" y="0.5" z="0.1" />
+        <SCALE sx="1" sy="0.6" sz="0.1" />
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
@@ -725,8 +726,8 @@
                                   <!-- id="null" maintains texture from parent node       -->
                                   <!-- id="clear" clears texture declaration received from parent node      -->
 
-        <TRANSLATION x="0.75" y="2.75" z="-0.5" />
-        <SCALE sx="4.5" sy="2.5" sz="0.5" />
+        <TRANSLATION x="0.1" y="0.55" z="0.2" />
+        <SCALE sx="0.8" sy="0.5" sz="0.1" />
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
@@ -744,7 +745,8 @@
                                   <!-- id="null" maintains texture from parent node       -->
                                   <!-- id="clear" clears texture declaration received from parent node      -->
 
-        <TRANSLATION x="0" y="2.75" z="0" />
+
+        <SCALE sx="2" sy="2" sz="2" />
 
         <!-- declaring descendents, ate least one node or one leaf must be present -->
         <DESCENDANTS>
@@ -1208,6 +1210,17 @@
 
         <DESCENDANTS>
             <DESCENDANT id="candeeiro" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="televisao1">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-0.8" y="2.5" z="0" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="televisao" />
         </DESCENDANTS>
     </NODE>
 
