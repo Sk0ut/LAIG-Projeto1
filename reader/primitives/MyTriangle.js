@@ -57,3 +57,8 @@ MyTriangle.prototype.initBuffers = function() {
 
 	this.initGLBuffers();
 }
+
+
+MyTriangle.prototype.scaleTexCoords = function(ampS, ampT) {
+	this.updateTexCoordsGLBuffers();
+}
