@@ -120,7 +120,16 @@ LSXSceneGraph.prototype.parseInitials = function(rootElement) {
 	var frustum = elems[0];
 
 	this.initials.frustum.near = this.reader.getFloat(frustum, "near");
+	if (this.initials.frustum.near == null)
+		return "Frustum near attribute missing";
+	if (isNaN(this.initials.frustum.near))
+		return "Frustum near is not a number";
+
 	this.initials.frustum.far = this.reader.getFloat(frustum, "far");
+	if (this.initials.frustum.far == null)
+		return "Frustum far attribute missing";
+	if (isNaN(this.initials.frustum.far))
+		return "Frustum far is not a number";
 
     elems = initials.getElementsByTagName("translation");
 	if (elems == null) {
@@ -133,8 +142,20 @@ LSXSceneGraph.prototype.parseInitials = function(rootElement) {
     var translation = elems[0];
     var translationData = vec3.create();
     translationData[0] = this.reader.getFloat(translation, "x");
+    if (translationData[0] == null)
+		return "Translation x attribute missing";
+	if (isNaN(translationData[0]))
+		return "Translation x is not a number";
     translationData[1] = this.reader.getFloat(translation, "y");
+    if (translationData[1] == null)
+		return "Translation y attribute missing";
+	if (isNaN(translationData[1]))
+		return "Translation y is not a number";
     translationData[2] = this.reader.getFloat(translation, "z");
+    if (translationData[2] == null)
+		return "Translation z attribute missing";
+	if (isNaN(translationData[2]))
+		return "Translation z is not a number";
 
     mat4.translate(this.initials.transformationMatrix, this.initials.transformationMatrix, translationData);
 
@@ -243,7 +264,12 @@ LSXSceneGraph.prototype.parseLights = function(rootElement) {
 
 	for (var i = 0; i < lights.children.length; ++i) {
 		var light = lights.children[i];
+		if (light.nodeName != "LIGHT")
+			return "Unknown element found in LIGHTS: " + light.nodeName;
 		var id = this.reader.getString(light, "id");
+		if (id == null)
+			return "id attribute missing for LIGHT";
+
 		this.lights.push(new SceneLight(this.scene, i, id));
 
 		var enable = this.reader.getBoolean(light.children[0], "value");

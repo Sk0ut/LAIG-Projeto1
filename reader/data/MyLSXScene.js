@@ -98,14 +98,6 @@ MyLSXScene.prototype.display = function () {
 	this.applyViewMatrix();
 
 	this.multMatrix(this.graph.initials.transformationMatrix);
-
-	// Draw axis
-	if (this.axis)
-	   this.axis.display();
-
-	// Draw objects
-	
-	this.setDefaultAppearance();
 	
 	// ---- END Background, camera and axis setup
 
@@ -113,7 +105,14 @@ MyLSXScene.prototype.display = function () {
 	// only get executed after the graph has loaded correctly.
 	// This is one possible way to do it
 	if (this.graph.loadedOk)
-	{
+	{	
+		// Draw axis
+		if (this.axis)
+	   		this.axis.display();
+
+	   	// Draw objects
+		this.setDefaultAppearance();
+	
 		for (var i = 0; i < this.lights.length; ++i)
 			this.lights[i].update();
 
@@ -126,12 +125,15 @@ MyLSXScene.prototype.display = function () {
 
 MyLSXScene.prototype.drawSceneGraph = function() {
 	this.drawNode(this.graph.root, "null", "clear");
+	this.setDefaultAppearance();
 }
 
 MyLSXScene.prototype.drawNode = function(node, parentMaterial, parentTexture) {
 	if (node in this.primitives) {
 		if (parentMaterial != "null")
 			this.graph.materials[parentMaterial].apply();
+		else
+			this.setDefaultAppearance();
 
 		var texture;
 

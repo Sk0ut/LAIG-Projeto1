@@ -49,7 +49,7 @@ MyTriangle.prototype.initBuffers = function() {
 		sC, tC,
 		0, 0,
 		vec3.length(AB), 0
-	]
+	];
 
 	this.texCoords = this.nonScaledTexCoords.slice(0);
 
