@@ -11,7 +11,7 @@
     <frustum near="0.1" far="500.0"/>
     <translation x="0" y="0" z="0" />
     <rotation axis="x" angle="0" />
-    <rotation axis="y" angle="0" />
+    <rotation axis="y" angle="180" />
     <rotation axis="z" angle="0" /> 
     <scale sx="1" sy="1" sz="1" />
     <reference length="5.0" />
@@ -20,7 +20,7 @@
 
 <ILLUMINATION>
     <ambient r="0.3" g="0.3" b="0.3" a="1.0" />
-    <background r="0.0" g="0.0" b="0.0" a="1.0" />
+    <background r="0.6" g="0.6" b="0.6" a="1.0" />
 </ILLUMINATION>
 
 
@@ -56,7 +56,7 @@
 	
     <TEXTURE id="floor">
         <file path="textures/floor.png" />                            
-        <amplif_factor s="1" t="1" />                
+        <amplif_factor s="0.05" t="0.05" />                
     </TEXTURE> 
 
     <TEXTURE id="wood">
@@ -115,14 +115,19 @@
     </TEXTURE> 
 	
     <TEXTURE id="kitchendoor">
-        <file path="textures/kitchendoor.jpg" />                            
+        <file path="textures/kitchendoor.jpg" />                           
         <amplif_factor s="1" t="1" />                
     </TEXTURE> 
 
     <TEXTURE id="microwave">
-        <file path="textures/microwavedoor.jpg" />                            
+        <file path="textures/microwavedoor.jpg" />               
         <amplif_factor s="1" t="1" />                
     </TEXTURE> 
+
+    <TEXTURE id="wall">
+        <file path="textures/wall.jpg" />
+        <amplif_factor s="0.05" t="0.125" />
+    </TEXTURE>
     
 </TEXTURES>
 
@@ -146,9 +151,9 @@
 
      <MATERIAL id="vermelho">                                  
         <shininess value="1.0" />
-        <specular r="1" g="0" b="0" a="1" />        <!-- specular reflection -->
-        <diffuse r="1" g="0" b="0" a="1" />         <!-- diffuse reflection -->
-        <ambient r="1" g="0" b="0" a="1" />         <!-- ambient reflection -->
+        <specular r="0.2" g="0" b="0" a="1" />        <!-- specular reflection -->
+        <diffuse r="0.5" g="0" b="0" a="1" />         <!-- diffuse reflection -->
+        <ambient r="0.7" g="0" b="0" a="1" />         <!-- ambient reflection -->
         <emission r="1" g="0" b="0" a="1" />        <!-- emission component -->
     </MATERIAL>
 </MATERIALS>
@@ -185,6 +190,7 @@
             <DESCENDANT id="mesang1" />
             <DESCENDANT id="mesang2" />
             <DESCENDANT id="porta1" />
+            <DESCENDANT id="porta2" />
             <DESCENDANT id="frigorifico1" />
             <DESCENDANT id="forno1" />
             <DESCENDANT id="mesamicroondas" />
@@ -195,6 +201,12 @@
             <DESCENDANT id="armario1" />
             <DESCENDANT id="balcaovertical1" />
             <DESCENDANT id="balcaohorizontal1" />
+            <DESCENDANT id="chao" />
+            <DESCENDANT id="parede1" />
+            <DESCENDANT id="parede2" />
+            <DESCENDANT id="parede3" />
+            <DESCENDANT id="parede4" />
+            <DESCENDANT id="mesang3" />
 
         </DESCENDANTS>
 
@@ -205,7 +217,7 @@
     <NODE id="cubesquare1">
 
 
-        <MATERIAL id="cenas" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="0" />
@@ -220,7 +232,7 @@
      <NODE id="cubesquare2">
 
 
-        <MATERIAL id="cenas" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="1" />
@@ -235,7 +247,7 @@
      <NODE id="cubesquare3">
 
 
-        <MATERIAL id="cenas" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
         <ROTATION axis="y" angle="90" />
         <TRANSLATION x="-1" y="0" z="1" />
@@ -250,7 +262,7 @@
      <NODE id="cubesquare4">
 
 
-        <MATERIAL id="cenas" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
         <ROTATION axis="y" angle="-90" />
 
@@ -263,7 +275,7 @@
      <NODE id="cubesquare5">
 
 
-        <MATERIAL id="cenas" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
         <TRANSLATION x="0" y="1" z="1" />
         <ROTATION axis="x" angle="-90" />
@@ -278,7 +290,7 @@
      <NODE id="cubesquare6">
 
 
-        <MATERIAL id="cenas" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="1" z="0" />
@@ -293,7 +305,7 @@
      <NODE id="cube">
 
 
-        <MATERIAL id="cenas" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
 
@@ -325,9 +337,7 @@
 
     </NODE>
 
-         <NODE id="pernamesa2">
-
-
+    <NODE id="pernamesa2">
         <MATERIAL id="cenas" />
         <TEXTURE id="lightwood" />
 
@@ -817,7 +827,7 @@
     <NODE id="portamicroondas">
 
         <MATERIAL id="cenas" />
-        <TEXTURE id="oven" />
+        <TEXTURE id="microwave" />
 
         <TRANSLATION x="1" y="0" z="1" />
         <ROTATION axis="y" angle="90" />
@@ -830,7 +840,7 @@
      <NODE id="microondas">
 
         <MATERIAL id="cenas" />
-        <TEXTURE id="microwave" />
+        <TEXTURE id="kitchendoor" />
 
         <TRANSLATION x="0" y="0.25" z="0" />
         <SCALE sx="1" sy="0.5" sz="1.5" />
@@ -885,12 +895,40 @@
 
     <!-- BALCAO -->
 
+    <NODE id="balcaohorizontaltopo">
+
+        <MATERIAL id="vermelho" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="1" z="0" />
+        <SCALE sx="1" sy="0.25" sz="1" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+        </DESCENDANTS>
+    </NODE>
+
      <NODE id="balcaohorizontal">
 
         <MATERIAL id="cenas" />
-        <TEXTURE id="null" />
+        <TEXTURE id="lightwood" />
 
-        <SCALE sx="10" sy="1.75" sz="1" />
+        <TRANSLATION x="-5" y="0" z="3" />
+        <SCALE sx="15" sy="1.75" sz="1" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="cube" />
+            <DESCENDANT id="balcaohorizontaltopo" />
+        </DESCENDANTS>
+    </NODE>
+
+     <NODE id="balcaoverticaltopo">
+
+        <MATERIAL id="vermelho" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="1" z="0" />
+        <SCALE sx="1" sy="0.25" sz="1" />
 
         <DESCENDANTS>
             <DESCENDANT id="cube" />
@@ -900,12 +938,14 @@
     <NODE id="balcaovertical">
 
         <MATERIAL id="cenas" />
-        <TEXTURE id="null" />
+        <TEXTURE id="lightwood" />
 
-        <SCALE sx="1" sy="1.75" sz="8" />
+        <TRANSLATION x="0" y="0" z="3" />
+        <SCALE sx="1" sy="1.75" sz="6" />
 
         <DESCENDANTS>
             <DESCENDANT id="cube" />
+            <DESCENDANT id="balcaoverticaltopo" />
         </DESCENDANTS>
     </NODE>
 
@@ -1052,7 +1092,7 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="-0.8" y="2.5" z="0" />
+        <TRANSLATION x="9" y="1.5" z="-3" />
 
         <DESCENDANTS>
             <DESCENDANT id="televisao" />
@@ -1085,7 +1125,18 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="8" y="0" z="0" />
+        <TRANSLATION x="14.99" y="0" z="0" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="porta" />
+        </DESCENDANTS>
+    </NODE>
+
+     <NODE id="porta2">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-4.99" y="0" z="12" />
 
         <DESCENDANTS>
             <DESCENDANT id="porta" />
@@ -1096,7 +1147,7 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="0" y="0" z="10" />
+        <TRANSLATION x="0" y="0" z="15" />
         <ROTATION axis="y" angle="90" />
 
         <DESCENDANTS>
@@ -1108,7 +1159,7 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="2" y="0" z="11.5" />
+        <TRANSLATION x="2" y="0" z="15" />
         <ROTATION axis="y" angle="90" />
 
         <DESCENDANTS>
@@ -1120,7 +1171,7 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="kitchendoor" />
 
-        <TRANSLATION x="4.5" y="0" z="11.5" />
+        <TRANSLATION x="4.5" y="0" z="15" />
         <ROTATION axis="y" angle="90" />
         <SCALE sx="2.5" sy="2.5" sz="2.5" />
 
@@ -1133,7 +1184,7 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="5" y="2.25" z="11" />
+        <TRANSLATION x="5" y="2.25" z="14" />
         <ROTATION axis="y" angle="90" />
 
         <DESCENDANTS>
@@ -1145,7 +1196,7 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="abajur" />
 
-        <TRANSLATION x="0" y="7.5" z="0" />
+        <TRANSLATION x="5" y="6" z="5" />
 
         <DESCENDANTS>
             <DESCENDANT id="tetocandeeiro" />
@@ -1154,9 +1205,9 @@
 
     <NODE id="prateleira1">
         <MATERIAL id="cenas" />
-        <TEXTURE id="kitchendoor" />
+        <TEXTURE id="null" />
 
-        <TRANSLATION x="2" y="4.5" z="10" />
+        <TRANSLATION x="2" y="4.5" z="14" />
 
         <DESCENDANTS>
             <DESCENDANT id="prateleira" />
@@ -1165,9 +1216,9 @@
 
     <NODE id="prateleira2">
         <MATERIAL id="cenas" />
-        <TEXTURE id="kitchendoor" />
+        <TEXTURE id="null" />
 
-        <TRANSLATION x="2" y="3.5" z="10" />
+        <TRANSLATION x="2" y="3.5" z="14" />
 
         <DESCENDANTS>
             <DESCENDANT id="prateleira" />
@@ -1178,7 +1229,7 @@
         <MATERIAL id="cenas" />
         <TEXTURE id="kitchendoor" />
 
-        <TRANSLATION x="7" y="0" z="10" />
+        <TRANSLATION x="7" y="0" z="15" />
         <ROTATION axis="y" angle="90" />
 
 
@@ -1189,7 +1240,7 @@
 
     <NODE id="balcaovertical1">
         <MATERIAL id="cenas" />
-        <TEXTURE id="steel" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="10" y="0" z="6" />
 
@@ -1200,12 +1251,89 @@
 
      <NODE id="balcaohorizontal1">
         <MATERIAL id="cenas" />
-        <TEXTURE id="steel" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="6" />
 
         <DESCENDANTS>
             <DESCENDANT id="balcaohorizontal" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="chao">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="floor" />
+
+        <TRANSLATION x="-5" y="0" z="15" />
+        <SCALE sx="20" sy="0" sz="20" />
+        <ROTATION axis="x" angle="-90" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="square" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="parede1">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="wall" />
+
+        <TRANSLATION x="15" y="0" z="-5" />
+        <SCALE sx="20" sy="8" sz="0" />
+        <ROTATION axis="y" angle="180" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="square" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="parede2">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="wall" />
+
+        <TRANSLATION x="15" y="0" z="15" />
+        <SCALE sx="20" sy="8" sz="0" />
+        <ROTATION axis="y" angle="180" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="square" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="parede3">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="wall" />
+
+        <TRANSLATION x="15" y="0" z="-5" />
+        <SCALE sx="0" sy="8" sz="20" />
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="square" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="parede4">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="wall" />
+
+        <TRANSLATION x="-5" y="0" z="15" />
+        <SCALE sx="0" sy="8" sz="20" />
+        <ROTATION axis="y" angle="90" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="square" />
+        </DESCENDANTS>
+    </NODE>
+
+   <NODE id="mesang3">
+        <MATERIAL id="cenas" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="10" y="0" z="-3" />
+        <SCALE sx="4" sy="1" sz="1.5" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="mesang" />
         </DESCENDANTS>
     </NODE>
 
