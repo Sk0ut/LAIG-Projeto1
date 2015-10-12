@@ -36,8 +36,8 @@ MyCylinder.prototype.initBuffers = function() {
  	this.indices=[];
  	for (var stack = 0; stack < this.stacks; ++stack) {
  		for (var slice = 0; slice < this.slices; ++slice) {
- 			this.indices.push(stack * (this.stacks+1) + slice, stack * (this.stacks+1) + slice + 1, (stack+1) * (this.stacks+1) + slice + 1);
- 			this.indices.push(stack * (this.stacks+1) + slice, (stack+1) * (this.stacks+1) + slice + 1, (stack+1) * (this.stacks+1) + slice);
+ 			this.indices.push(stack * (this.slices+1) + slice, stack * (this.slices+1) + slice + 1, (stack+1) * (this.slices+1) + slice + 1);
+ 			this.indices.push(stack * (this.slices+1) + slice, (stack+1) * (this.slices+1) + slice + 1, (stack+1) * (this.slices+1) + slice);
  		}
  	}
 	
