@@ -9,7 +9,7 @@
 
 <INITIALS>
     <frustum near="0.1" far="500.0"/>
-    <translation x="0" y="0" z="0" />
+    <translation x="-15" y="-20" z="-15" />
     <rotation axis="x" angle="0" />
     <rotation axis="y" angle="180" />
     <rotation axis="z" angle="0" /> 
@@ -859,7 +859,7 @@
         <TEXTURE id="steel" />
 
         <TRANSLATION x="0" y="2.25" z="0" />
-        <SCALE sx="0.1" sy="3" sz="0.1" />
+        <SCALE sx="0.1" sy="1.25" sz="0.1" />
 
         <DESCENDANTS>
             <DESCENDANT id="cylinder" />
