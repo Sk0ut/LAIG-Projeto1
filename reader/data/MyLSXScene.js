@@ -111,16 +111,21 @@ MyLSXScene.prototype.display = function () {
 	// only get executed after the graph has loaded correctly.
 	// This is one possible way to do it
 	if (this.graph.loadedOk)
-	{	
+	{			
 		// Draw axis
 		if (this.axis)
 	   		this.axis.display();
 
 	   	// Draw objects
 		this.setDefaultAppearance();
-	
-		for (var i = 0; i < this.lights.length; ++i)
+		
+		for (var i = 0; i < this.graph.lights.length; ++i){
+			if(this.lightsEnabled[this.lights[i].id])
+				this.lights[i].enable();
+			else
+				this.lights[i].disable();
 			this.lights[i].update();
+		}
 
 		this.drawSceneGraph();
 	}	
