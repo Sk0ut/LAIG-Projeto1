@@ -118,9 +118,14 @@ MyLSXScene.prototype.display = function () {
 
 	   	// Draw objects
 		this.setDefaultAppearance();
-	
-		for (var i = 0; i < this.lights.length; ++i)
+		
+		for (var i = 0; i < this.graph.lights.length; ++i){
+			if(this.lightsEnabled[this.lights[i].id])
+				this.lights[i].enable();
+			else
+				this.lights[i].disable();
 			this.lights[i].update();
+		}
 
 		this.drawSceneGraph();
 	}	
