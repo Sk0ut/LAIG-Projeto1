@@ -16,7 +16,7 @@ MyCylinder.prototype = Object.create(CGFobject.prototype);
 MyCylinder.prototype.constructor = MyCylinder;
 
 MyCylinder.prototype.initBuffers = function() {
-    var angulo = 2*Math.PI/this.slices;
+    var dTheta = 2*Math.PI/this.slices;
 	var dRadius = (this.tRadius - this.bRadius) / this.stacks;
 	var dHeight = this.height / this.stacks;
 
@@ -24,11 +24,21 @@ MyCylinder.prototype.initBuffers = function() {
  	this.normals=[];
 	this.texCoords=[];
 
+	var vecNormal = vec3.create();
+
  	for (var stack = 0; stack <= this.stacks; ++stack) {
+ 		var radius = this.bRadius + dRadius * stack;
+ 		var height = dHeight * stack;
  		for (var slice = 0; slice <= this.slices; ++slice) {
- 			/* TODO: Corrigir normais */
- 			this.vertices.push((this.bRadius + (dRadius * stack)) * Math.cos(slice*angulo),(this.bRadius + (dRadius * stack))*Math.sin(slice*angulo),stack * dHeight);
- 			this.normals.push(Math.cos(slice*angulo),Math.sin(slice*angulo),0);
+ 			var theta = dTheta * slice;
+ 			this.vertices.push(radius * Math.cos(theta),radius*Math.sin(theta),height);
+
+			var vecDiffSlice = vec3.fromValues(radius*(-Math.sin(theta))*dTheta, radius*Math.cos(theta)*dTheta, 0);
+			var vecDiffStack = vec3.fromValues(Math.cos(theta)*dRadius, Math.sin(theta)*dRadius, dHeight);
+			vec3.cross(vecNormal, vecDiffSlice, vecDiffStack);
+			vec3.normalize(vecNormal, vecNormal);
+
+ 			this.normals.push(vecNormal[0],vecNormal[1],vecNormal[2]);
  			this.texCoords.push(slice/this.slices, stack/this.stacks);
  		}
  	}
