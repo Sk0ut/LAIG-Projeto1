@@ -96,8 +96,6 @@ MyLSXScene.prototype.display = function () {
 
 	// Apply transformations corresponding to the camera position relative to the origin
 	this.applyViewMatrix();
-
-	this.multMatrix(this.graph.initials.transformationMatrix);
 	
 	// ---- END Background, camera and axis setup
 
@@ -106,6 +104,8 @@ MyLSXScene.prototype.display = function () {
 	// This is one possible way to do it
 	if (this.graph.loadedOk)
 	{	
+		this.multMatrix(this.graph.initials.transformationMatrix);
+	
 		// Draw axis
 		if (this.axis)
 	   		this.axis.display();
