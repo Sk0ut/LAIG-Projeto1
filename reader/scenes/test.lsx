@@ -87,11 +87,6 @@
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
 
-    <TEXTURE id="drawers">
-        <file path="textures/drawers.jpg" />                            
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE> 
-
     <TEXTURE id="abajur">
         <file path="textures/abajur.jpg" />                            
         <amplif_factor s="1" t="1" />                
