@@ -19,19 +19,21 @@ serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
 'data/LSXReader.js', 'data/SceneTexture.js', 'data/SceneGraphLeaf.js',
 'data/SceneGraphLeafCylinder.js', 'data/SceneGraphLeafRectangle.js',
 'data/SceneGraphLeafSphere.js', 'data/SceneGraphLeafTriangle.js', 'data/SceneMaterial.js',
-'data/SceneGraphNode.js',
+'data/SceneGraphNode.js', 'data/MyInterface.js',
 
 main=function()
 {
 	// Standard application, scene and interface setup
     var app = new CGFapplication(document.body);
     var myScene = new MyLSXScene();
-    var myInterface = new CGFinterface();
+    var myInterface = new MyInterface();
 
     app.init();
 
-    app.setScene(myScene);
     app.setInterface(myInterface);
+    app.setScene(myScene);
+	myScene.setInterface(myInterface);
+	myInterface.setScene(myScene);
 
     myInterface.setActiveCamera(myScene.camera);
 

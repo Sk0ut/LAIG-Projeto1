@@ -8,6 +8,8 @@ MyLSXScene.prototype.constructor = MyLSXScene;
 MyLSXScene.prototype.init = function (application) {
     CGFscene.prototype.init.call(this, application);
 
+    this.myinterface = null;
+
     this.initCameras();
 
     this.initLights();
@@ -23,15 +25,16 @@ MyLSXScene.prototype.init = function (application) {
     this.enableTextures(true);
 };
 
+MyLSXScene.prototype.setInterface = function(myinterface) {
+	this.myinterface = myinterface;
+}
+
 MyLSXScene.prototype.initObjects = function() {
 	this.primitives = [];
 }
 
 MyLSXScene.prototype.initLights = function () {
-
-    this.shader.bind();
- 
-    this.shader.unbind();
+	this.lightsEnabled = [];
 };
 
 MyLSXScene.prototype.initCameras = function () {
@@ -61,7 +64,10 @@ MyLSXScene.prototype.onGraphLoaded = function ()
     for (var i = 0; i < this.graph.lights.length; ++i) {
     	this.lights[i] = this.graph.lights[i];
     	this.lights[i].setVisible(true);
+    	this.lightsEnabled[this.lights[i].id] = this.lights[i].enabled;
     }
+
+    this.myinterface.onGraphLoaded();
 
     for (key in this.graph.leaves) {
     	var leaf = this.graph.leaves[key];
