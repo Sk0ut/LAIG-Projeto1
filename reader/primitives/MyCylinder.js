@@ -30,7 +30,6 @@ MyCylinder.prototype.initBuffers = function() {
  		var radius = this.bRadius + dRadius * stack;
  		var height = dHeight * stack;
  		for (var slice = 0; slice <= this.slices; ++slice) {
- 			/* TODO: Corrigir normais */
  			var theta = dTheta * slice;
  			this.vertices.push(radius * Math.cos(theta),radius*Math.sin(theta),height);
 
