@@ -543,7 +543,18 @@
         <ROTATION axis="x" angle="-90" />
         <DESCENDANTS>
            <DESCENDANT id="lamp" />
+           <DESCENDANT id="candeeiroabajurinterior" />
         </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="candeeiroabajurinterior">
+    	<MATERIAL id="null" />
+    	<TEXTURE id="null" />
+    	<SCALE sx="1" sy="-1" sz="1" />
+    	<DESCENDANTS>
+    		<DESCENDANT id="lamp" />
+    	</DESCENDANTS>
 
     </NODE>
 
