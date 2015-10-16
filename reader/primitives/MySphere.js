@@ -29,7 +29,7 @@
 		for (var slice = 0; slice <= this.slices; ++slice) {
 			this.vertices.push(this.radius * Math.sin(stack * dTheta) * Math.cos(slice * dPhi), this.radius * Math.sin(stack * dTheta) * Math.sin(slice * dPhi), this.radius * Math.cos(stack * dTheta));
 			this.normals.push(Math.sin(stack * dTheta) * Math.cos(slice * dPhi), Math.sin(stack * dTheta) * Math.sin(slice * dPhi), Math.cos(stack * dTheta));
-			this.texCoords.push(slice/this.slices, 1-stack/this.stacks);
+			this.texCoords.push(slice/this.slices, stack/this.stacks);
 		}
 	}
 

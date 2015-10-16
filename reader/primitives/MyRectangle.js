@@ -1,5 +1,5 @@
 /**
-* My Triangle
+* My Rectangle
 */
 
 function MyRectangle(scene,x1,y1,x2,y2){

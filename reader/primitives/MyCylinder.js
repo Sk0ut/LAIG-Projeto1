@@ -39,7 +39,7 @@ MyCylinder.prototype.initBuffers = function() {
 			vec3.normalize(vecNormal, vecNormal);
 
  			this.normals.push(vecNormal[0],vecNormal[1],vecNormal[2]);
- 			this.texCoords.push(slice/this.slices, stack/this.stacks);
+ 			this.texCoords.push(slice/this.slices, 1-stack/this.stacks);
  		}
  	}
 

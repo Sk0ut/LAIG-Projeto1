@@ -114,7 +114,7 @@
 
     <TEXTURE id="wall">
         <file path="textures/wall.jpg" />
-        <amplif_factor s="0.05" t="0.125" />
+        <amplif_factor s="0.75" t="0.75" />
     </TEXTURE>
     
 </TEXTURES>
