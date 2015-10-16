@@ -15,12 +15,14 @@ MyInterface.prototype.init = function(application) {
 MyInterface.prototype.onGraphLoaded = function(){
     var group = this.gui.addFolder('Lights');
     group.open();
+	var self = this;
 
 	for(key in this.scene.lightsEnabled){
-	    group.add(this.scene.lightsEnabled,key);
+	    var controller = group.add(this.scene.lightsEnabled,key);
+	    controller.onChange(function(enable) {
+	    	self.scene.updateLight(this.property, enable);
+	    });
 	}
-
-	return true;
 }
 
 MyInterface.prototype.setScene = function(scene) {

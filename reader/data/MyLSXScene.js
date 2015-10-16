@@ -119,13 +119,8 @@ MyLSXScene.prototype.display = function () {
 	   	// Draw objects
 		this.setDefaultAppearance();
 		
-		for (var i = 0; i < this.graph.lights.length; ++i){
-			if(this.lightsEnabled[this.lights[i].id])
-				this.lights[i].enable();
-			else
-				this.lights[i].disable();
+		for (var i = 0; i < this.graph.lights.length; ++i)
 			this.lights[i].update();
-		}
 
 		this.drawSceneGraph();
 	}	
@@ -180,4 +175,15 @@ MyLSXScene.prototype.drawNode = function(node, parentMaterial, parentTexture) {
 	}
 
 	this.popMatrix();
+}
+
+MyLSXScene.prototype.updateLight = function(lightId, enable) {
+	console.log("Changing light " + lightId);
+	for (var i = 0; i < this.graph.lights.length; ++i) {
+		if (this.lights[i].id == lightId) {
+			var light = this.lights[i];
+			enable ? light.enable() : light.disable();
+			return;
+		}
+	}
 }
