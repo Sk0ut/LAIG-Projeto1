@@ -1,3 +1,12 @@
+/**
+ * @param scene The scene to which this cylinder belongs.
+ * @param height Cylinder height
+ * @param bRadius Cylinder bottom radius
+ * @param tRadius Cylinder top radius
+ * @param slices Number of divisions of each circle
+ * @param stacks Number of divisions of the cylinder
+ * @constructor MyCylinder constructor.
+ */
 function MyCylinder(scene, height, bRadius, tRadius, stacks, slices) {
  	CGFobject.call(this,scene);
 	
@@ -10,11 +19,14 @@ function MyCylinder(scene, height, bRadius, tRadius, stacks, slices) {
 	this.tRadius = tRadius;
 
  	this.initBuffers();
-};
+}
 
 MyCylinder.prototype = Object.create(CGFobject.prototype);
 MyCylinder.prototype.constructor = MyCylinder;
 
+/**
+ * Method in which the geometry of the cylinder is defined.
+ */
 MyCylinder.prototype.initBuffers = function() {
     var dTheta = 2*Math.PI/this.slices;
 	var dRadius = (this.tRadius - this.bRadius) / this.stacks;
@@ -55,6 +67,11 @@ MyCylinder.prototype.initBuffers = function() {
 	this.initGLBuffers();
  };
 
+/**
+ * texCoords scaling.
+ * @param ampS Scaling along the S axis.
+ * @param ampT Scaling along the T axis.
+ */
 MyCylinder.prototype.scaleTexCoords = function(ampS, ampT) {
 	this.updateTexCoordsGLBuffers();
 }

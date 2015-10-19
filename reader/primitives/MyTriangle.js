@@ -1,6 +1,16 @@
 /**
-* My Triangle
-*/
+ * @param scene The scene to which this triangle belongs.
+ * @param x1 First point x coordinate
+ * @param y1 First point y coordinate
+ * @param z1 First point z coordinate
+ * @param x2 Second point x coordinate
+ * @param y2 Second point y coordinate
+ * @param z2 Second point z coordinate
+ * @param x3 Third point x coordinate
+ * @param y3 Third point y coordinate
+ * @param z3 Third point z coordinate
+ * @constructor MyTriangle constructor.
+ */
 
 function MyTriangle(scene, x1,y1,z1,x2,y2,z2,x3,y3,z3){
     CGFobject.call(this,scene);
@@ -13,9 +23,11 @@ function MyTriangle(scene, x1,y1,z1,x2,y2,z2,x3,y3,z3){
 }
 
 MyTriangle.prototype = Object.create(CGFobject.prototype);
-
 MyTriangle.prototype.constructor = MyTriangle;
 
+/**
+ * Method in which the geometry of the cylinder is defined.
+ */
 MyTriangle.prototype.initBuffers = function() {
 
     this.vertices = [
@@ -58,7 +70,11 @@ MyTriangle.prototype.initBuffers = function() {
 	this.initGLBuffers();
 }
 
-
+/**
+ * texCoords scaling.
+ * @param ampS Scaling along the S axis.
+ * @param ampT Scaling along the T axis.
+ */
 MyTriangle.prototype.scaleTexCoords = function(ampS, ampT) {
 	for (var i = 0; i < this.texCoords.length; i += 2) {
 		this.texCoords[i] = this.nonScaledTexCoords[i] / ampS;

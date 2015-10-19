@@ -11,15 +11,14 @@ function getUrlVars() {
     return vars;
 }	 
 
-serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
+serialInclude(['../lib/CGF.js',
 'primitives/MyTriangle.js', 'primitives/MyRectangle.js', 'primitives/MyCylinder.js',
 'primitives/MySphere.js',
-'data/MyLSXScene.js', 'data/SceneInitials.js', 'data/SceneIllumination.js',
-'data/SceneElements.js', 'data/SceneLight.js', 'data/LSXSceneGraph.js',
-'data/LSXReader.js', 'data/SceneTexture.js', 'data/SceneGraphLeaf.js',
+'MyLSXScene.js', 'data/SceneInitials.js', 'data/SceneIllumination.js', 'data/SceneLight.js', 'LSXSceneGraph.js',
+'LSXReader.js', 'data/SceneTexture.js', 'data/SceneGraphLeaf.js',
 'data/SceneGraphLeafCylinder.js', 'data/SceneGraphLeafRectangle.js',
 'data/SceneGraphLeafSphere.js', 'data/SceneGraphLeafTriangle.js', 'data/SceneMaterial.js',
-'data/SceneGraphNode.js', 'data/MyInterface.js',
+'data/SceneGraphNode.js', 'MyInterface.js',
 
 main=function()
 {

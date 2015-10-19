@@ -1,6 +1,9 @@
 /**
- * MySphere
- * @constructor
+ * @param scene The scene to which this sphere belongs.
+ * @param radius Sphere radius.
+ * @param slices Number of divisions of each circle of the sphere.
+ * @param stacks Number of divisions of the sphere.
+ * @constructor MySphere constructor.
  */
  function MySphere(scene, radius, slices, stacks) {
  	CGFobject.call(this,scene);
@@ -15,6 +18,9 @@
  MySphere.prototype = Object.create(CGFobject.prototype);
  MySphere.prototype.constructor = MySphere;
 
+/**
+ * Method in which the geometry of the cylinder is defined.
+ */
  MySphere.prototype.initBuffers = function() {
 
 	this.indices = [];
@@ -44,7 +50,11 @@
  	this.initGLBuffers();
  };
 
- 
+/**
+ * texCoords scaling.
+ * @param ampS Scaling along the S axis.
+ * @param ampT Scaling along the T axis.
+ */
 MySphere.prototype.scaleTexCoords = function(ampS, ampT) {
 	this.updateTexCoordsGLBuffers();
 }

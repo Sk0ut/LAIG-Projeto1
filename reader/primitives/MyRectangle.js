@@ -1,7 +1,11 @@
 /**
-* My Rectangle
-*/
-
+ * @param scene The scene to which this rectangle belongs.
+ * @param x1 X Coordinate of top-left point
+ * @param y1 Y Coordinate of top-left point
+ * @param x2 X Coordinate of bottom-right point
+ * @param y2 Y Coordinate of bottom-right point
+ * @constructor MyRectangle constructor.
+ */
 function MyRectangle(scene,x1,y1,x2,y2){
     CGFobject.call(this,scene);
 
@@ -15,9 +19,11 @@ function MyRectangle(scene,x1,y1,x2,y2){
 }
 
 MyRectangle.prototype = Object.create(CGFobject.prototype);
-
 MyRectangle.prototype.constructor = MyRectangle;
 
+/**
+ * Method in which the geometry of the cylinder is defined.
+ */
 MyRectangle.prototype.initBuffers = function() {
 
     this.vertices = [
@@ -52,6 +58,11 @@ MyRectangle.prototype.initBuffers = function() {
 	this.initGLBuffers();
 }
 
+/**
+ * texCoords scaling.
+ * @param ampS Scaling along the S axis.
+ * @param ampT Scaling along the T axis.
+ */
 MyRectangle.prototype.scaleTexCoords = function(ampS, ampT) {
 	for (var i = 0; i < this.texCoords.length; i += 2) {
 		this.texCoords[i] = this.nonScaledTexCoords[i] / ampS;
