@@ -2,7 +2,7 @@
 
 <INITIALS>
     <frustum near="0.1" far="500.0"/>
-    <translation x="0" y="0" z="0" />
+    <translation x="-5" y="0" z="-5" />
     <rotation axis="x" angle="0" />
     <rotation axis="y" angle="0" />
     <rotation axis="z" angle="0" /> 
@@ -12,34 +12,34 @@
 
 
 <ILLUMINATION>
-    <ambient r="0.3" g="0.3" b="0.3" a="1.0" />
+    <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
     <background r="0.6" g="0.6" b="0.6" a="1.0" />
 </ILLUMINATION>
 
 
 <LIGHTS>
-    <LIGHT id="luz_teto">
+    <LIGHT id="luz_teto1">
         <enable value= "1" />
-        <position x="10" y="6" z="10" w="1.0" />
-        <ambient r="1" g="1" b="1" a="1.0" />
-        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
-        <specular r="1" g="1" b="1" a="1.0" /> 
+        <position x="10" y="7" z="10" w="1.0" />
+        <ambient r="0.9" g="0.9" b="0.9" a="1.0" />
+        <diffuse r="0.9" g="0.9" b="0.9" a="1.0" />
+        <specular r="0.9" g="0.9" b="0.9" a="1.0" /> 
     </LIGHT>
 
     <LIGHT id="luz_candeeiro1">
         <enable value= "1" />
         <position x="1.025" y="2.5" z="11.25" w="1.0" />
-        <ambient r="0.5" g="0.5" b="0.5" a="1.0" />
-        <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
-        <specular r="0.5" g="0.5" b="0.5" a="1.0" /> 
+        <ambient r="0.06" g="0.06" b="0.06" a="1.0" />
+        <diffuse r="0.17" g="0.17" b="0.17" a="1.0" />
+        <specular r="0.17" g="0.17" b="0.17" a="1.0" />  
     </LIGHT>
 
     <LIGHT id="luz_candeeiro2">
         <enable value= "1" />
         <position x="10.125" y="2.5" z="11.25" w="1.0" />
-        <ambient r="0.5" g="0.5" b="0.5" a="1.0" />
-        <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
-        <specular r="0.5" g="0.5" b="0.5" a="1.0" /> 
+        <ambient r="0.06" g="0.06" b="0.06" a="1.0" />
+        <diffuse r="0.17" g="0.17" b="0.17" a="1.0" />
+        <specular r="0.17" g="0.17" b="0.17" a="1.0" /> 
     </LIGHT>
     
 </LIGHTS>
@@ -54,7 +54,7 @@
 
     <TEXTURE id="wood">
         <file path="textures/wood.png" />                            
-        <amplif_factor s="1" t="1" />                
+        <amplif_factor s="5" t="5" />                
     </TEXTURE> 
 
     <TEXTURE id="sofa">
@@ -121,12 +121,53 @@
 
 
 <MATERIALS>
-    <MATERIAL id="generico">                                  
-        <shininess value="120.0" />
-        <specular r="0.694" g="0.696" b="0.635" a="0.5" />        <!-- specular reflection -->
-        <diffuse r="0.694" g="0.696" b="0.635" a="0.5" />      <!-- diffuse reflection -->
-        <ambient r="0.3" g="0.3" b="0.3" a="0.5" />        <!-- ambient reflection -->
-        <emission r="0.694" g="0.696" b="0.635" a="0.5" />       <!-- emission component -->
+    <MATERIAL id="normal">                                  
+        <shininess value="10.0" />
+        <specular r="0.694" g="0.696" b="0.635" a="1.0" />        <!-- specular reflection -->
+        <diffuse r="0.694" g="0.696" b="0.635" a="1.0" />      <!-- diffuse reflection -->
+        <ambient r="0.694" g="0.696" b="0.635" a="1.0" />        <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />       <!-- emission component -->
+    </MATERIAL>
+
+    <MATERIAL id="chao">                                  
+        <shininess value="10.0" />
+        <specular r="0.6" g="0.6" b="0.6" a="1.0" />        <!-- specular reflection -->
+        <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />      <!-- diffuse reflection -->
+        <ambient r="0.6" g="0.6" b="0.6" a="1.0" />      <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />       <!-- emission component -->
+    </MATERIAL>
+
+
+    <MATERIAL id="wood">                                  
+        <shininess value="10.0" />
+        <specular r="0.2" g="0.2" b="0.2" a="1.0" />        <!-- specular reflection -->
+        <diffuse r="0.4" g="0.2" b="0" a="1.0" />      <!-- diffuse reflection -->
+        <ambient r="0.4" g="0.2" b="0" a="1.0" />        <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />       <!-- emission component -->
+    </MATERIAL>
+
+     <MATERIAL id="lightwood">                                  
+        <shininess value="10.0" />
+        <specular r="0.7" g="0.6" b="0.3" a="1.0" />        <!-- specular reflection -->
+        <diffuse r="0.7" g="0.6" b="0.3" a="1.0" />      <!-- diffuse reflection -->
+        <ambient r="0.7" g="0.6" b="0.3" a="1.0" />        <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />       <!-- emission component -->
+    </MATERIAL>
+
+    <MATERIAL id="cinzento-matte">                                  
+        <shininess value="10.0" />
+        <specular r="0.1" g="0.1" b="0.1" a="1" />        <!-- specular reflection -->
+        <diffuse r="0.5" g="0.5" b="0.5" a="1" />      <!-- diffuse reflection -->
+        <ambient r="0.5" g="0.5" b="0.5" a="1" />        <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />       <!-- emission component -->
+    </MATERIAL>
+
+    <MATERIAL id="bordeaux">                        
+        <shininess value="10.0" />
+        <specular r="0.17" g="0.03" b="0.04" a="1" />        <!-- specular reflection -->
+        <diffuse r="0.5" g="0.1" b="0.12" a="1" />      <!-- diffuse reflection -->
+        <ambient r="0.5" g="0.1" b="0.12" a="1" />        <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />       <!-- emission component -->
     </MATERIAL>
 
      <MATERIAL id="preto">                                  
@@ -140,9 +181,18 @@
      <MATERIAL id="vermelho">                                  
         <shininess value="1.0" />
         <specular r="0.4" g="0" b="0" a="1" />        <!-- specular reflection -->
-        <diffuse r="1" g="0" b="0" a="1" />         <!-- diffuse reflection -->
-        <ambient r="0.3" g="0" b="0" a="1" />         <!-- ambient reflection -->
-        <emission r="1" g="0" b="0" a="1" />        <!-- emission component -->
+        <diffuse r="0.6" g="0" b="0" a="1" />         <!-- diffuse reflection -->
+        <ambient r="0.6" g="0" b="0" a="1" />         <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />        <!-- emission component -->
+    </MATERIAL>
+
+
+     <MATERIAL id="lampada">                                  
+        <shininess value="10.0" />
+        <specular r="1.0" g="1" b="0.4" a="0.8" />        <!-- specular reflection -->
+        <diffuse r="1.0" g="1" b="0.4" a="0.8" />         <!-- diffuse reflection -->
+        <ambient r="1" g="1" b="0.4" a="0.8" />         <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="1" />        <!-- emission component -->
     </MATERIAL>
 </MATERIALS>
 
@@ -162,7 +212,7 @@
 
     <NODE id="sala">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="clear" />
 
         <TRANSLATION x="15" y="0" z="15" />
@@ -170,35 +220,22 @@
 
 
         <DESCENDANTS>
-            <DESCENDANT id="cadeira1" /> 
-            <DESCENDANT id="cadeira2" /> 
-            <DESCENDANT id="cadeira3" /> 
-            <DESCENDANT id="cadeira4" /> 
-            <DESCENDANT id="mesa1" />
-            <DESCENDANT id="candeeiro1" />
-            <DESCENDANT id="candeeiro2" />
-            <DESCENDANT id="televisao1" />
-            <DESCENDANT id="mesang1" />
-            <DESCENDANT id="mesang2" />
+            <DESCENDANT id="salaestar" />
+
             <DESCENDANT id="porta1" />
             <DESCENDANT id="porta2" />
-            <DESCENDANT id="frigorifico1" />
-            <DESCENDANT id="forno1" />
-            <DESCENDANT id="mesamicroondas" />
-            <DESCENDANT id="microondas1" />
+
+            <DESCENDANT id="kitchenette" />
+
             <DESCENDANT id="tetocandeeiro1" />
-            <DESCENDANT id="prateleira1" />
-            <DESCENDANT id="prateleira2" />
-            <DESCENDANT id="armario1" />
+
             <DESCENDANT id="balcaovertical1" />
             <DESCENDANT id="balcaohorizontal1" />
             <DESCENDANT id="chao" />
-            <DESCENDANT id="parede1" />
-            <DESCENDANT id="parede2" />
-            <DESCENDANT id="parede3" />
-            <DESCENDANT id="parede4" />
-            <DESCENDANT id="mesang3" />
-            <DESCENDANT id="sofa1" />
+
+            <DESCENDANT id="paredes" />
+            <DESCENDANT id="salajantar" />
+
         </DESCENDANTS>
 
     </NODE>
@@ -317,7 +354,7 @@
     <NODE id="pernamesa1">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="lightwood" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="-2.5" y="0" z="-1" />
@@ -329,7 +366,7 @@
     </NODE>
 
     <NODE id="pernamesa2">
-        <MATERIAL id="generico" />
+        <MATERIAL id="lightwood" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="-2.5" y="0" z="1" />
@@ -340,10 +377,10 @@
 
     </NODE>
 
-         <NODE id="pernamesa3">
+    <NODE id="pernamesa3">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="lightwood" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="2.5" y="0" z="-1" />
@@ -357,7 +394,7 @@
          <NODE id="pernamesa4">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="lightwood" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="2.5" y="0" z="1" />
@@ -371,7 +408,7 @@
     <NODE id="tampomesa">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="steel" />
         <TRANSLATION x="-2.75" y="1.5" z="-1.25" />
         <SCALE sx="6" sy="0.25" sz="3" />
@@ -384,7 +421,7 @@
     <NODE id="mesa">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <DESCENDANTS>
@@ -399,59 +436,57 @@
 
 
 	<!-- CADEIRA -->
+	<NODE id="pernacadeira">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
-	<NODE id="pernacadeira1">
-
-
-        <MATERIAL id="generico" />
-        <TEXTURE id="lightwood" />
-
-        <TRANSLATION x="-0.25" y="0" z="-0.25" />
         <SCALE sx="0.1" sy="0.5" sz="0.1" />
         <DESCENDANTS>
             <DESCENDANT id="cube" />
+        </DESCENDANTS>
+
+    </NODE>
+
+	<NODE id="pernacadeira1">
+        <MATERIAL id="lightwood" />
+        <TEXTURE id="lightwood" />
+
+        <TRANSLATION x="-0.25" y="0" z="-0.25" />
+        <DESCENDANTS>
+            <DESCENDANT id="pernacadeira" />
         </DESCENDANTS>
 
     </NODE>
 
     <NODE id="pernacadeira2">
-
-
-        <MATERIAL id="generico" />
+        <MATERIAL id="lightwood" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="-0.25" y="0" z="0.25" />
-        <SCALE sx="0.1" sy="0.5" sz="0.1" />
         <DESCENDANTS>
-            <DESCENDANT id="cube" />
+            <DESCENDANT id="pernacadeira" />
         </DESCENDANTS>
 
     </NODE>
 
     <NODE id="pernacadeira3">
-
-
-        <MATERIAL id="generico" />
+   		<MATERIAL id="lightwood" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="0.25" y="0" z="-0.25" />
-        <SCALE sx="0.1" sy="0.5" sz="0.1" />
         <DESCENDANTS>
-            <DESCENDANT id="cube" />
+            <DESCENDANT id="pernacadeira" />
         </DESCENDANTS>
 
     </NODE>
 
     <NODE id="pernacadeira4">
-
-
-        <MATERIAL id="generico" />
+    	<MATERIAL id="lightwood" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="0.25" y="0" z="0.25" />
-        <SCALE sx="0.1" sy="0.5" sz="0.1" />
         <DESCENDANTS>
-            <DESCENDANT id="cube" />
+            <DESCENDANT id="pernacadeira" />
         </DESCENDANTS>
 
     </NODE>
@@ -459,7 +494,7 @@
     <NODE id="tampocadeira">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="wood" />
         <TEXTURE id="chair" />
         <TRANSLATION x="-0.35" y="0.5" z="-0.30" />
         <SCALE sx="0.75" sy="0.1" sz="0.75" />
@@ -472,7 +507,7 @@
     <NODE id="encostocadeira">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="wood" />
         <TEXTURE id="chair" />
         <TRANSLATION x="-0.35" y="0.5" z="-0.3" />
         <SCALE sx="0.75" sy="1" sz="0.1" />
@@ -483,7 +518,7 @@
     </NODE>
 
     <NODE id="cadeira">
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
         <TRANSLATION x="0" y="0" z="0.5" />
         <SCALE sx="2" sy="1.5" sz="2" />
@@ -515,7 +550,7 @@
     <NODE id="candeeirope">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="steel" />
 
         <TRANSLATION x="0.325" y="0.1" z="0.325" />
@@ -531,7 +566,7 @@
     <NODE id="candeeiroabajur">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="lampada" />
         <TEXTURE id="abajur" />
         
         <TRANSLATION x="0.325" y="1" z="0.325" />
@@ -557,7 +592,7 @@
     <NODE id="candeeiro">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
         <DESCENDANTS>
            <DESCENDANT id="candeeiroabajur" />
@@ -616,7 +651,7 @@
      <NODE id="televisaovisor">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="steel" />
 
         <TRANSLATION x="0.1" y="0.55" z="0.16" />
@@ -631,7 +666,7 @@
      <NODE id="televisao">
 
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
 
@@ -648,69 +683,68 @@
 
     <!-- MESA NAO GENERICA -->
 
-     <NODE id="mesangperna1">
-
-
-        <MATERIAL id="generico" />
+    <NODE id="mesangperna">
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="-0.55" y="0" z="-0.55" />
         <SCALE sx="0.15" sy="1.25" sz="0.15" />
 
         <DESCENDANTS>
            <DESCENDANT id="cube" />
         </DESCENDANTS>
+    </NODE>
+
+
+    <NODE id="mesangperna1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-0.55" y="0" z="-0.55" />
+
+        <DESCENDANTS>
+           <DESCENDANT id="mesangperna" />
+        </DESCENDANTS>
 
     </NODE>
 
-         <NODE id="mesangperna2">
-
-
-        <MATERIAL id="generico" />
+    <NODE id="mesangperna2">
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0.55" y="0" z="-0.55" />
-        <SCALE sx="0.15" sy="1.25" sz="0.15" />
 
         <DESCENDANTS>
-            <DESCENDANT id="cube" />
+            <DESCENDANT id="mesangperna" />
         </DESCENDANTS>
 
     </NODE>
 
     <NODE id="mesangperna3">
-
-
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="-0.55" y="0" z="0.55" />
-        <SCALE sx="0.15" sy="1.25" sz="0.15" />
 
         <DESCENDANTS>
-            <DESCENDANT id="cube" />
+            <DESCENDANT id="mesangperna" />
         </DESCENDANTS>
 
     </NODE>
 
     <NODE id="mesangperna4">
-
-
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0.55" y="0" z="0.55" />
-        <SCALE sx="0.15" sy="1.25" sz="0.15" />
 
         <DESCENDANTS>
-            <DESCENDANT id="cube" />
+            <DESCENDANT id="mesangperna" />
         </DESCENDANTS>
 
     </NODE>
 
     <NODE id="mesangcorpo">
-
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="-0.45" y="0.25" z="-0.45" />
@@ -722,8 +756,7 @@
     </NODE>
 
      <NODE id="mesangtampo">
-
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="-0.575" y="1.25" z="-0.575" />
@@ -735,8 +768,7 @@
     </NODE>
 
     <NODE id="mesang">
-
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="wood" />
 
         <DESCENDANTS>
@@ -753,7 +785,7 @@
 
     <NODE id="porta">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="wood" />
         <TEXTURE id="door" />
 
         <SCALE sx="0.1" sy="5" sz="2" />
@@ -767,7 +799,7 @@
 
     <NODE id="frigorifico">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="fridge" />
 
         <TRANSLATION x="0" y="0" z="0" />
@@ -783,7 +815,7 @@
 
     <NODE id="fogao">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="stove" />
 
         <TRANSLATION x="0" y="1" z="1" />
@@ -796,7 +828,7 @@
 
      <NODE id="portaforno">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="oven" />
 
         <TRANSLATION x="1" y="0" z="1" />
@@ -809,7 +841,7 @@
 
     <NODE id="forno">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="steel" />
 
         <TRANSLATION x="0" y="0" z="0" />
@@ -826,7 +858,7 @@
 
     <NODE id="portamicroondas">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="microwave" />
 
         <TRANSLATION x="1" y="0" z="1" />
@@ -839,7 +871,7 @@
 
      <NODE id="microondas">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="steel" />
 
         <TRANSLATION x="0" y="0.25" z="0" />
@@ -855,7 +887,7 @@
 
     <NODE id="fiotetocandeeiro">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="steel" />
 
         <TRANSLATION x="0" y="1" z="0" />
@@ -869,8 +901,8 @@
 
      <NODE id="tetocandeeiro">
 
-        <MATERIAL id="generico" />
-        <TEXTURE id="null" />
+        <MATERIAL id="lampada" />
+        <TEXTURE id="abajur" />
 
         <SCALE sx="0.75" sy="0.75" sz="0.75" />
 
@@ -884,7 +916,7 @@
 
       <NODE id="armario">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="kitchendoor" />
 
         <SCALE sx="1" sy="5" sz="2" />
@@ -898,7 +930,7 @@
 
      <NODE id="prateleira">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="steel" />
 
         <SCALE sx="5" sy="0.20" sz="1" />
@@ -925,7 +957,7 @@
 
      <NODE id="balcaohorizontal">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="-5" y="0" z="3" />
@@ -952,7 +984,7 @@
 
     <NODE id="balcaovertical">
 
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="0" y="0" z="3" />
@@ -968,8 +1000,8 @@
 
     <NODE id="perna1sofa">
 
-        <MATERIAL id="generico" />
-        <TEXTURE id="sofa" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="-0.5" y="0.15" z="0" />
         <SCALE sx="0.5" sy="0.70" sz="2" />
@@ -982,8 +1014,8 @@
 
     <NODE id="perna2sofa">
 
-        <MATERIAL id="generico" />
-        <TEXTURE id="sofa" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="4" y="0.15" z="0" />
         <SCALE sx="0.5" sy="0.70" sz="2" />
@@ -995,8 +1027,8 @@
 
     <NODE id="assentosofa">
 
-        <MATERIAL id="generico" />
-        <TEXTURE id="sofa" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="-0.1" />
         <SCALE sx="4" sy="0.40" sz="1.6" />
@@ -1008,8 +1040,8 @@
 
     <NODE id="encostosofa">
 
-        <MATERIAL id="generico" />
-        <TEXTURE id="sofa" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="1.5" z="1.5" />
         <SCALE sx="4" sy="1.5" sz="0.5" />
@@ -1022,8 +1054,8 @@
 
     <NODE id="sofa">
 
-        <MATERIAL id="generico" />
-        <TEXTURE id="null" />
+        <MATERIAL id="bordeaux" />
+        <TEXTURE id="sofa" />
 
         <SCALE sx="1.5" sy="1.5" sz="1" />
 
@@ -1040,7 +1072,7 @@
 
 
     <NODE id="mesa1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <DESCENDANTS>
@@ -1050,7 +1082,7 @@
     </NODE>
 
     <NODE id="cadeira1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="-1" y="0" z="-2" />
@@ -1062,7 +1094,7 @@
     </NODE>
 
     <NODE id="cadeira2">
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="1" y="0" z="-2" />
@@ -1074,10 +1106,10 @@
     </NODE>
 
     <NODE id="cadeira3">
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="1" y="0" z="2" />
+        <TRANSLATION x="1" y="0" z="2.5" />
         <ROTATION axis="y" angle="180" />
 
         <DESCENDANTS>
@@ -1087,10 +1119,10 @@
     </NODE>
 
     <NODE id="cadeira4">
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="-1" y="0" z="2" />
+        <TRANSLATION x="-1" y="0" z="2.5" />
         <ROTATION axis="y" angle="180" />
 
         <DESCENDANTS>
@@ -1100,7 +1132,7 @@
     </NODE>
 
     <NODE id="candeeiro1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="13.70" y="1.3" z="3.45" />
@@ -1111,7 +1143,7 @@
     </NODE>
 
     <NODE id="candeeiro2">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="4.5" y="1.3" z="3.45" />
@@ -1122,7 +1154,7 @@
     </NODE>
 
     <NODE id="televisao1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="9" y="1.3" z="-3" />
@@ -1133,7 +1165,7 @@
     </NODE>
 
     <NODE id="mesang1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="4.8" y="0" z="3.75" />
@@ -1144,7 +1176,7 @@
     </NODE>
 
     <NODE id="mesang2">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="14" y="0" z="3.75" />
@@ -1155,7 +1187,7 @@
     </NODE>
 
     <NODE id="porta1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="14.99" y="0" z="0" />
@@ -1166,7 +1198,7 @@
     </NODE>
 
      <NODE id="porta2">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="-4.99" y="0" z="12" />
@@ -1177,7 +1209,7 @@
     </NODE>
 
      <NODE id="frigorifico1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="15" />
@@ -1189,7 +1221,7 @@
     </NODE>
 
     <NODE id="forno1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="2" y="0" z="15" />
@@ -1201,7 +1233,7 @@
     </NODE>
 
     <NODE id="mesamicroondas">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="kitchendoor" />
 
         <TRANSLATION x="4.5" y="0" z="15" />
@@ -1214,7 +1246,7 @@
     </NODE>
 
      <NODE id="microondas1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="5" y="2.25" z="14" />
@@ -1226,10 +1258,10 @@
     </NODE>
 
     <NODE id="tetocandeeiro1">
-        <MATERIAL id="generico" />
-        <TEXTURE id="abajur" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
-        <TRANSLATION x="5" y="6" z="5" />
+        <TRANSLATION x="5" y="7" z="5" />
 
         <DESCENDANTS>
             <DESCENDANT id="tetocandeeiro" />
@@ -1237,7 +1269,7 @@
     </NODE>
 
     <NODE id="prateleira1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="2" y="4.5" z="14" />
@@ -1248,7 +1280,7 @@
     </NODE>
 
     <NODE id="prateleira2">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="2" y="3.5" z="14" />
@@ -1259,7 +1291,7 @@
     </NODE>
 
     <NODE id="armario1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="kitchen" />
 
         <TRANSLATION x="7" y="0" z="15" />
@@ -1271,7 +1303,7 @@
     </NODE>
 
     <NODE id="balcaovertical1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="10" y="0" z="6" />
@@ -1282,7 +1314,7 @@
     </NODE>
 
      <NODE id="balcaohorizontal1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="6" />
@@ -1293,7 +1325,7 @@
     </NODE>
 
     <NODE id="chao">
-        <MATERIAL id="generico" />
+        <MATERIAL id="chao" />
         <TEXTURE id="floor" />
 
         <TRANSLATION x="-5" y="0" z="15" />
@@ -1306,8 +1338,8 @@
     </NODE>
 
     <NODE id="parede1">
-        <MATERIAL id="generico" />
-        <TEXTURE id="wall" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="15" y="8" z="-5" />
         <SCALE sx="20" sy="8" sz="0" />
@@ -1319,8 +1351,8 @@
     </NODE>
 
     <NODE id="parede2">
-        <MATERIAL id="generico" />
-        <TEXTURE id="wall" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="15" y="0" z="15" />
         <SCALE sx="20" sy="8" sz="0" />
@@ -1332,9 +1364,8 @@
     </NODE>
 
     <NODE id="parede3">
-        <MATERIAL id="generico" />
-        <TEXTURE id="wall" />
-
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
         <TRANSLATION x="15" y="0" z="-5" />
         <SCALE sx="0" sy="8" sz="20" />
         <ROTATION axis="y" angle="-90" />
@@ -1345,8 +1376,8 @@
     </NODE>
 
     <NODE id="parede4">
-        <MATERIAL id="generico" />
-        <TEXTURE id="wall" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 
         <TRANSLATION x="-5" y="0" z="15" />
         <SCALE sx="0" sy="8" sz="20" />
@@ -1358,7 +1389,7 @@
     </NODE>
 
    <NODE id="mesang3">
-        <MATERIAL id="generico" />
+        <MATERIAL id="normal" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="9.5" y="0" z="-3" />
@@ -1370,7 +1401,7 @@
     </NODE>
 
     <NODE id="sofa1">
-        <MATERIAL id="generico" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="6.5" y="0" z="3" />
@@ -1379,6 +1410,73 @@
             <DESCENDANT id="sofa" />
         </DESCENDANTS>
     </NODE>
+
+    <!-- Aglomerados -->
+
+    <NODE id="paredes">
+        <MATERIAL id="cinzento-matte" />
+        <TEXTURE id="wall" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="parede1" />
+            <DESCENDANT id="parede2" />
+            <DESCENDANT id="parede3" />
+            <DESCENDANT id="parede4" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="cadeiras">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="cadeira1" />
+            <DESCENDANT id="cadeira2" />
+            <DESCENDANT id="cadeira3" />
+            <DESCENDANT id="cadeira4" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="salajantar">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="mesa1" />
+            <DESCENDANT id="cadeiras" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="salaestar">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="sofa1" />
+            <DESCENDANT id="candeeiro1" />
+            <DESCENDANT id="candeeiro2" />
+            <DESCENDANT id="televisao1" />
+            <DESCENDANT id="mesang1" />
+            <DESCENDANT id="mesang2" />
+            <DESCENDANT id="mesang3" />
+        </DESCENDANTS>
+    </NODE>
+
+	<NODE id="kitchenette">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <DESCENDANT id="frigorifico1" />
+            <DESCENDANT id="forno1" />
+            <DESCENDANT id="mesamicroondas" />
+            <DESCENDANT id="microondas1" />
+            <DESCENDANT id="prateleira1" />
+            <DESCENDANT id="prateleira2" />
+            <DESCENDANT id="armario1" />
+        </DESCENDANTS>
+    </NODE>
+      
 
 </NODES>
 
