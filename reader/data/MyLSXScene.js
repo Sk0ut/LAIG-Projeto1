@@ -9,6 +9,7 @@ MyLSXScene.prototype.init = function (application) {
     CGFscene.prototype.init.call(this, application);
 
     this.myinterface = null;
+    this.graph = null;
 
     this.initCameras();
 
@@ -46,9 +47,9 @@ MyLSXScene.prototype.initCameras = function () {
 };
 
 MyLSXScene.prototype.setDefaultAppearance = function () {
-    this.setAmbient(0.2, 0.4, 0.8, 1.0);
-    this.setDiffuse(0.2, 0.4, 0.8, 1.0);
-    this.setSpecular(0.2, 0.4, 0.8, 1.0);
+    this.setAmbient(0.2, 0.2, 0.2, 1.0);
+    this.setDiffuse(0.4, 0.4, 0.4, 1.0);
+    this.setSpecular(0.2, 0.2, 0.2, 1.0);
     this.setShininess(10.0);	
 };
 
@@ -115,19 +116,20 @@ MyLSXScene.prototype.display = function () {
 	// it is important that things depending on the proper loading of the graph
 	// only get executed after the graph has loaded correctly.
 	// This is one possible way to do it
-	if (this.graph.loadedOk)
+	if (this.graph != null && this.graph.loadedOk)
 	{	
 		this.multMatrix(this.graph.initials.transformationMatrix);
 	
+		for (var i = 0; i < this.lights.length; ++i)
+			this.lights[i].update();
+
+		this.setDefaultAppearance();
 		// Draw axis
 		if (this.axis)
 	   		this.axis.display();
 
 	   	// Draw objects
 		this.setDefaultAppearance();
-		
-		for (var i = 0; i < this.lights.length; ++i)
-			this.lights[i].update();
 
 		this.drawSceneGraph();
 	}	
@@ -147,7 +149,7 @@ MyLSXScene.prototype.drawNode = function(node, parentMaterial, parentTexture) {
 			this.graph.materials[parentMaterial].apply();
 		else
 			this.setDefaultAppearance();
-
+	
 		var texture;
 
 		if (parentTexture != "clear")
