@@ -22,6 +22,10 @@ MyLSXScene.prototype.init = function (application) {
     this.gl.enable(this.gl.DEPTH_TEST);
 	this.gl.enable(this.gl.CULL_FACE);
     this.gl.depthFunc(this.gl.LEQUAL);
+
+	this.gl.enable(this.gl.BLEND);
+	this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
+
     this.enableTextures(true);
 };
 
@@ -61,13 +65,16 @@ MyLSXScene.prototype.onGraphLoaded = function ()
 	this.gl.clearColor(this.graph.illumination.background[0],this.graph.illumination.background[1],this.graph.illumination.background[2],this.graph.illumination.background[3]);
 	this.setGlobalAmbientLight(this.graph.illumination.ambient[0],this.graph.illumination.ambient[1],this.graph.illumination.ambient[2],this.graph.illumination.ambient[3]);
 
+	this.lights = [];
+
     for (var i = 0; i < this.graph.lights.length; ++i) {
-    	this.lights[i] = this.graph.lights[i];
+    	this.lights.push(this.graph.lights[i]);
     	this.lights[i].setVisible(true);
     	this.lightsEnabled[this.lights[i].id] = this.lights[i].enabled;
     }
 
-    this.myinterface.onGraphLoaded();
+	if (this.myinterface != null)
+	    this.myinterface.onGraphLoaded();
 
     for (key in this.graph.leaves) {
     	var leaf = this.graph.leaves[key];
@@ -119,7 +126,7 @@ MyLSXScene.prototype.display = function () {
 	   	// Draw objects
 		this.setDefaultAppearance();
 		
-		for (var i = 0; i < this.graph.lights.length; ++i)
+		for (var i = 0; i < this.lights.length; ++i)
 			this.lights[i].update();
 
 		this.drawSceneGraph();
@@ -178,8 +185,7 @@ MyLSXScene.prototype.drawNode = function(node, parentMaterial, parentTexture) {
 }
 
 MyLSXScene.prototype.updateLight = function(lightId, enable) {
-	console.log("Changing light " + lightId);
-	for (var i = 0; i < this.graph.lights.length; ++i) {
+	for (var i = 0; i < this.lights.length; ++i) {
 		if (this.lights[i].id == lightId) {
 			var light = this.lights[i];
 			enable ? light.enable() : light.disable();
