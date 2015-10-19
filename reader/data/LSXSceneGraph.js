@@ -93,6 +93,15 @@ LSXSceneGraph.prototype.parseSceneGraph = function(rootElement) {
         return error;
     }
 
+	if (rootElement.children[0].nodeName != "INITIALS" ||
+		rootElement.children[1].nodeName != "ILLUMINATION" ||
+		rootElement.children[2].nodeName != "LIGHTS" ||
+		rootElement.children[3].nodeName != "TEXTURES" ||
+		rootElement.children[4].nodeName != "MATERIALS" ||
+		rootElement.children[5].nodeName != "LEAVES" ||
+		rootElement.children[6].nodeName != "NODES")
+		console.warn("Wrong order of SCENE children");
+
     this.loadedOk = true;
 }
 
@@ -208,6 +217,15 @@ LSXSceneGraph.prototype.parseInitials = function(rootElement) {
 
 	var reference = elems[0];
 	this.initials.referenceLength = this.reader.getFloat(reference, "length");
+
+	if (initials.children[0].nodeName != "frustum" ||
+	    initials.children[1].nodeName != "translation" ||
+	    initials.children[2].nodeName != "rotation" ||
+	    initials.children[3].nodeName != "rotation" ||
+	    initials.children[4].nodeName != "rotation" ||
+	    initials.children[5].nodeName != "scale" ||
+	    initials.children[6].nodeName != "reference")
+		console.warn("Wrong order of children on INITIALS, parsing as default order(Translation, Rotation, Scale)");
 
 	this.initials;
 };
@@ -398,18 +416,26 @@ LSXSceneGraph.prototype.parseLeaves = function(rootElement) {
 		switch (type) {
 			case "rectangle":
 				data = this.reader.getRectangle(leaf, "args");
+				if (data == null)
+					return "Error parsing rectangle " + id + " args"; 
 				this.leaves[id] = new SceneGraphLeafRectangle(id, data[0], data[1], data[2], data[3]);
 				break;
 			case "cylinder":
 				data = this.reader.getCylinder(leaf, "args");
+				if (data == null)
+					return "Error parsing cylinder " + id + " args";
 				this.leaves[id] = new SceneGraphLeafCylinder(id, data[0], data[1], data[2], data[3], data[4]);
 				break;
 			case "sphere":
 				data = this.reader.getSphere(leaf, "args");
+				if (data == null)
+					return "Error parsing sphere " + id + " args";
 				this.leaves[id] = new SceneGraphLeafSphere(id, data[0], data[1], data[2]);
 				break;
 			case "triangle":
 				data = this.reader.getTriangle(leaf, "args");
+				if (data == null)
+					return "Error parsing triangle " + id + " args";
 				this.leaves[id] = new SceneGraphLeafTriangle(id, data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]);
 				break;
 			default:
@@ -468,10 +494,16 @@ LSXSceneGraph.prototype.parseNode = function(node) {
 	
 	this.nodes[id] = new SceneGraphNode(id);
 
-	var material = this.reader.getString(node.children[0], "id");
+	var childNode = node.children[0];
+	if (childNode.nodeName != "MATERIAL")
+		return "Expected MATERIAL as NODE " + id + " as 1st child, found " + childNode.nodeName;
+	var material = this.reader.getString(childNode, "id");
 	this.nodes[id].setMaterial(material);
 
-	var texture = this.reader.getString(node.children[1], "id");
+	childNode = node.children[1];
+	if (childNode.nodeName != "TEXTURE")
+		return "Expected TEXURE as NODE " + id + " as 2nd child, found " + childNode.nodeName;
+	var texture = this.reader.getString(childNode, "id");
 	this.nodes[id].setTexture(texture);
 
 	for (var i = 2; i < node.children.length - 1; ++i) {
@@ -513,6 +545,8 @@ LSXSceneGraph.prototype.parseNode = function(node) {
 	}
 
 	var descendants = node.children[node.children.length - 1];
+	if (descendants.nodeName != "DESCENDANTS")
+		return "Expected DESCENDANTS as NODE " + id + " last child, found: " + descendants.nodeName;
 
 	if (descendants.children.length == 0)
 		return "Node " + id + " with no descendants";

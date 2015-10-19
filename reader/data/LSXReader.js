@@ -68,7 +68,14 @@ LSXReader.prototype.getArrayOfFloats = function(element, attributeName, numFloat
 
     var arrayOfFloats = new Array();
     for (var i = 0; i < floats.length; i++)
-        arrayOfFloats.push(parseFloat(floats[i]));
+    {
+        var arg = parseFloat(floats[i]);
+        if (isNaN(arg)) {
+            console.error("value for attribute " + attributeName + " is not a float");
+            return null;       
+        }
+        arrayOfFloats.push(arg);
+    }
     return arrayOfFloats;
 }
 
@@ -77,11 +84,106 @@ LSXReader.prototype.getRectangle = function(element, attributeName, required) {
 }
 
 LSXReader.prototype.getCylinder = function(element, attributeName, required) {
-    return this.getArrayOfFloats(element, attributeName, 5, required);
+    if (required == undefined)
+        required = true;
+    
+    if (element == null) {
+        console.error("element is null.");
+        return null;
+    }
+    if (attributeName == null) {
+        console.error("attribute name is null.");
+        return null;
+    }
+    var attribute = element.getAttribute(attributeName);
+    if (attribute == null) {
+        if (required) console.error("value is null for attribute " + attributeName + ".");
+        return null;
+    }
+
+    var argsString = attribute.match(/\S+/g);
+    if (argsString.length != 5) {
+        console.error("wrong number of value for attribute " + attributeName, " (expected 5).");
+        return null;
+    }    
+
+    var argsValue = new Array();
+    var arg = parseFloat(argsString[0]);
+    if (isNaN(arg))
+    {
+        console.error("expected float as cylinder's height, found: " + argsString[0]);
+        return null;
+    }
+    argsValue.push(arg);
+
+    arg = parseFloat(argsString[1]);
+    if (isNaN(arg))
+    {
+        console.error("expected float as cylinder's bottom radius, found: " + argsString[1]);
+        return null;
+    }
+    argsValue.push(arg);
+    
+    arg = parseFloat(argsString[2]);
+    if (isNaN(arg))
+    {
+        console.error("expected float as cylinder's top radius, found: " + argsString[2]);
+        return null;
+    }
+    argsValue.push(arg);
+    
+    arg = parseInt(argsString[3]);
+    if (isNaN(arg))
+    {
+        console.error("expected integer as cylinder's slices, found: " + argsString[3]);
+        return null;
+    }
+    argsValue.push(arg);
+
+    arg = parseInt(argsString[4]);
+    if (isNaN(arg))
+    {
+        console.error("expected integer as cylinder's stacks, found: " + argsString[4]);
+        return null;
+    }
+    argsValue.push(arg);
+
+    return argsValue;
 }
 
 LSXReader.prototype.getSphere = function(element, attributeName, required) {
-    return this.getArrayOfFloats(element, attributeName, 3, required);
+     if (required == undefined)
+        required = true;
+    
+    if (element == null) {
+        console.error("element is null.");
+        return null;
+    }
+    if (attributeName == null) {
+        console.error("attribute name is null.");
+        return null;
+    }
+    var attribute = element.getAttribute(attributeName);
+    if (attribute == null) {
+        if (required) console.error("value is null for attribute " + attributeName + ".");
+        return null;
+    }
+
+    var argsString = attribute.match(/\S+/g);
+    if (argsString.length != 3) {
+        console.error("wrong number of value for attribute " + attributeName, " (expected 3).");
+        return null;
+    }    
+
+    var argsValue = new Array();
+    var arg = parseFloat(argsString[0]);
+    argsValue.push(arg);
+    arg = parseInt(argsString[1]);
+    argsValue.push(arg);
+    arg = parseInt(argsString[2]);
+    argsValue.push(arg);
+
+    return argsValue;
 }
 
 LSXReader.prototype.getTriangle = function(element, attributeName, required) {
