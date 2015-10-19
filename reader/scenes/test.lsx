@@ -2,12 +2,12 @@
 
 <INITIALS>
     <frustum near="0.1" far="500.0"/>
-    <translation x="-15" y="-20" z="-15" />
+    <translation x="0" y="0" z="0" />
     <rotation axis="x" angle="0" />
-    <rotation axis="y" angle="180" />
+    <rotation axis="y" angle="0" />
     <rotation axis="z" angle="0" /> 
-    <scale sx="1" sy="1" sz="1" />
-    <reference length="5.0" />
+    <scale sx="0.5" sy="0.5" sz="0.5" />
+    <reference length="0" />
 </INITIALS>
 
 
@@ -20,7 +20,7 @@
 <LIGHTS>
     <LIGHT id="luz_teto">
         <enable value= "1" />
-        <position x="5" y="6" z="5" w="1.0" />
+        <position x="10" y="6" z="10" w="1.0" />
         <ambient r="1" g="1" b="1" a="1.0" />
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
         <specular r="1" g="1" b="1" a="1.0" /> 
@@ -28,18 +28,18 @@
 
     <LIGHT id="luz_candeeiro1">
         <enable value= "1" />
-        <position x="6.025" y="2.5" z="3.775" w="1.0" />
-        <ambient r="0.3" g="0.3" b="0.3" a="1.0" />
-        <diffuse r="0.3" g="0.3" b="0.3" a="1.0" />
-        <specular r="0.3" g="0.3" b="0.3" a="1.0" /> 
+        <position x="1.025" y="2.5" z="11.25" w="1.0" />
+        <ambient r="0.5" g="0.5" b="0.5" a="1.0" />
+        <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+        <specular r="0.5" g="0.5" b="0.5" a="1.0" /> 
     </LIGHT>
 
     <LIGHT id="luz_candeeiro2">
         <enable value= "1" />
-        <position x="14.025" y="2.5" z="3.775" w="1.0" />
-        <ambient r="0.3" g="0.3" b="0.3" a="1.0" />
-        <diffuse r="0.3" g="0.3" b="0.3" a="1.0" />
-        <specular r="0.3" g="0.3" b="0.3" a="1.0" /> 
+        <position x="10.125" y="2.5" z="11.25" w="1.0" />
+        <ambient r="0.5" g="0.5" b="0.5" a="1.0" />
+        <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+        <specular r="0.5" g="0.5" b="0.5" a="1.0" /> 
     </LIGHT>
     
 </LIGHTS>
@@ -48,8 +48,8 @@
 <TEXTURES>
 	
     <TEXTURE id="floor">
-        <file path="textures/floor.png" />                            
-        <amplif_factor s="0.05" t="0.05" />                
+        <file path="textures/floor.jpg" />                            
+        <amplif_factor s="0.125" t="0.125" />                
     </TEXTURE> 
 
     <TEXTURE id="wood">
@@ -125,7 +125,7 @@
         <shininess value="120.0" />
         <specular r="0.694" g="0.696" b="0.635" a="0.5" />        <!-- specular reflection -->
         <diffuse r="0.694" g="0.696" b="0.635" a="0.5" />      <!-- diffuse reflection -->
-        <ambient r="0.694" g="0.696" b="0.635" a="0.5" />        <!-- ambient reflection -->
+        <ambient r="0.3" g="0.3" b="0.3" a="0.5" />        <!-- ambient reflection -->
         <emission r="0.694" g="0.696" b="0.635" a="0.5" />       <!-- emission component -->
     </MATERIAL>
 
@@ -139,9 +139,9 @@
 
      <MATERIAL id="vermelho">                                  
         <shininess value="1.0" />
-        <specular r="0.2" g="0" b="0" a="1" />        <!-- specular reflection -->
-        <diffuse r="0.5" g="0" b="0" a="1" />         <!-- diffuse reflection -->
-        <ambient r="0.7" g="0" b="0" a="1" />         <!-- ambient reflection -->
+        <specular r="0.4" g="0" b="0" a="1" />        <!-- specular reflection -->
+        <diffuse r="1" g="0" b="0" a="1" />         <!-- diffuse reflection -->
+        <ambient r="0.3" g="0" b="0" a="1" />         <!-- ambient reflection -->
         <emission r="1" g="0" b="0" a="1" />        <!-- emission component -->
     </MATERIAL>
 </MATERIALS>
@@ -158,13 +158,16 @@
 <NODES>
     <ROOT id="sala" />
 
-
     <!-- SALA -->
 
     <NODE id="sala">
 
         <MATERIAL id="generico" />
         <TEXTURE id="clear" />
+
+        <TRANSLATION x="15" y="0" z="15" />
+        <ROTATION axis="y" angle="180" />
+
 
         <DESCENDANTS>
             <DESCENDANT id="cadeira1" /> 
@@ -318,7 +321,7 @@
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="-2.5" y="0" z="-1" />
-        <SCALE sx="0.5" sy="2" sz="0.5" />
+        <SCALE sx="0.5" sy="1.5" sz="0.5" />
         <DESCENDANTS>
             <DESCENDANT id="cube" />
         </DESCENDANTS>
@@ -330,7 +333,7 @@
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="-2.5" y="0" z="1" />
-        <SCALE sx="0.5" sy="2" sz="0.5" />
+        <SCALE sx="0.5" sy="1.5" sz="0.5" />
         <DESCENDANTS>
             <DESCENDANT id="cube" />
         </DESCENDANTS>
@@ -344,7 +347,7 @@
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="2.5" y="0" z="-1" />
-        <SCALE sx="0.5" sy="2" sz="0.5" />
+        <SCALE sx="0.5" sy="1.5" sz="0.5" />
         <DESCENDANTS>
             <DESCENDANT id="cube" />
         </DESCENDANTS>
@@ -358,7 +361,7 @@
         <TEXTURE id="lightwood" />
 
         <TRANSLATION x="2.5" y="0" z="1" />
-        <SCALE sx="0.5" sy="2" sz="0.5" />
+        <SCALE sx="0.5" sy="1.5" sz="0.5" />
         <DESCENDANTS>
             <DESCENDANT id="cube" />
         </DESCENDANTS>
@@ -370,8 +373,8 @@
 
         <MATERIAL id="generico" />
         <TEXTURE id="steel" />
-        <TRANSLATION x="-2.75" y="2" z="-1.25" />
-        <SCALE sx="6" sy="0.5" sz="3" />
+        <TRANSLATION x="-2.75" y="1.5" z="-1.25" />
+        <SCALE sx="6" sy="0.25" sz="3" />
         <DESCENDANTS>
             <DESCENDANT id="cube" />
         </DESCENDANTS>
@@ -472,7 +475,7 @@
         <MATERIAL id="generico" />
         <TEXTURE id="chair" />
         <TRANSLATION x="-0.35" y="0.5" z="-0.3" />
-        <SCALE sx="0.75" sy="0.75" sz="0.1" />
+        <SCALE sx="0.75" sy="1" sz="0.1" />
         <DESCENDANTS>
             <DESCENDANT id="cube" />
         </DESCENDANTS>
@@ -480,12 +483,10 @@
     </NODE>
 
     <NODE id="cadeira">
-
-
         <MATERIAL id="generico" />
         <TEXTURE id="null" />
         <TRANSLATION x="0" y="0" z="0.5" />
-        <SCALE sx="2" sy="2" sz="2" />
+        <SCALE sx="2" sy="1.5" sz="2" />
         <DESCENDANTS>
             <DESCENDANT id="pernacadeira1" />
             <DESCENDANT id="pernacadeira2" />
@@ -809,7 +810,7 @@
     <NODE id="forno">
 
         <MATERIAL id="generico" />
-        <TEXTURE id="null" />
+        <TEXTURE id="steel" />
 
         <TRANSLATION x="0" y="0" z="0" />
         <SCALE sx="2.5" sy="2.5" sz="2.5" />
@@ -857,8 +858,9 @@
         <MATERIAL id="generico" />
         <TEXTURE id="steel" />
 
-        <TRANSLATION x="0" y="2.25" z="0" />
-        <SCALE sx="0.1" sy="1.25" sz="0.1" />
+        <TRANSLATION x="0" y="1" z="0" />
+        <ROTATION axis="x" angle="-90" />
+        <SCALE sx="0.1" sy="0.1" sz="2" />
 
         <DESCENDANTS>
             <DESCENDANT id="cylinder" />
@@ -969,8 +971,8 @@
         <MATERIAL id="generico" />
         <TEXTURE id="sofa" />
 
-        <TRANSLATION x="-1" y="0.15" z="0" />
-        <SCALE sx="1" sy="0.70" sz="2" />
+        <TRANSLATION x="-0.5" y="0.15" z="0" />
+        <SCALE sx="0.5" sy="0.70" sz="2" />
 
         <DESCENDANTS>
             <DESCENDANT id="cube" />
@@ -984,7 +986,7 @@
         <TEXTURE id="sofa" />
 
         <TRANSLATION x="4" y="0.15" z="0" />
-        <SCALE sx="1" sy="0.70" sz="2" />
+        <SCALE sx="0.5" sy="0.70" sz="2" />
 
         <DESCENDANTS>
             <DESCENDANT id="cube" />
@@ -1009,8 +1011,8 @@
         <MATERIAL id="generico" />
         <TEXTURE id="sofa" />
 
-        <TRANSLATION x="0" y="1.3" z="1.5" />
-        <SCALE sx="4" sy="1" sz="0.5" />
+        <TRANSLATION x="0" y="1.5" z="1.5" />
+        <SCALE sx="4" sy="1.5" sz="0.5" />
         <ROTATION axis="x" angle="90" />
 
         <DESCENDANTS>
@@ -1022,6 +1024,8 @@
 
         <MATERIAL id="generico" />
         <TEXTURE id="null" />
+
+        <SCALE sx="1.5" sy="1.5" sz="1" />
 
         <DESCENDANTS>
             <DESCENDANT id="encostosofa" />
@@ -1110,7 +1114,7 @@
         <MATERIAL id="generico" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="5.70" y="1.3" z="3.45" />
+        <TRANSLATION x="4.5" y="1.3" z="3.45" />
 
         <DESCENDANTS>
             <DESCENDANT id="candeeiro" />
@@ -1132,7 +1136,7 @@
         <MATERIAL id="generico" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="6" y="0" z="3.75" />
+        <TRANSLATION x="4.8" y="0" z="3.75" />
 
         <DESCENDANTS>
             <DESCENDANT id="mesang" />
@@ -1261,7 +1265,6 @@
         <TRANSLATION x="7" y="0" z="15" />
         <ROTATION axis="y" angle="90" />
 
-
         <DESCENDANTS>
             <DESCENDANT id="armario" />
         </DESCENDANTS>
@@ -1370,7 +1373,7 @@
         <MATERIAL id="generico" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="8" y="0" z="3" />
+        <TRANSLATION x="6.5" y="0" z="3" />
 
         <DESCENDANTS>
             <DESCENDANT id="sofa" />
